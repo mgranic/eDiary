@@ -9,13 +9,9 @@ import SwiftUI
 
 struct CreateChapterView: View {
     @Environment(\.dismiss) var dismiss
+    @Environment(\.modelContext) var modelCtx
     @State var name: String = ""
     @State var date: Date = Date()
-    //@Binding var presentSheet: Bool
-    
-    //init(presentSheet: Binding<Bool>) {
-    //    self._presentSheet = presentSheet
-    //}
     
     var body: some View {
         Form {
@@ -36,7 +32,9 @@ struct CreateChapterView: View {
                 HStack {
                     Section {
                         Button("Submit") {
-                            
+                            let chapterManager = ChapterManager()
+                            chapterManager.createChapter(name: name, date: date, modelCtx: modelCtx)
+                            dismiss()
                         }
                         .buttonStyle(.bordered)
                         .controlSize(.large)

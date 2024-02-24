@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainScreen: View {
+    @Environment(\.modelContext) var modelCtx
     @StateObject var chapterManager = ChapterManager()
     @State var showCreateChapterSheet: Bool = false   // toggle create chapter form
     var body: some View {
@@ -21,7 +22,14 @@ struct MainScreen: View {
                         .font(.system(.title2, design: .rounded))
                     Image(systemName: "plus.circle.fill")
                 }
-                .sheet(isPresented: $showCreateChapterSheet, onDismiss: { /*update list of chapters*/ }) {
+                .onAppear {
+                    // update list of chapters
+                    chapterManager.updateChapterList(modelCtx: modelCtx)
+                }
+                .sheet(isPresented: $showCreateChapterSheet, onDismiss: {
+                    // update list of chapters
+                    chapterManager.updateChapterList(modelCtx: modelCtx)
+                }) {
                     // create chapter sheet
                     CreateChapterView()
                 }
@@ -44,9 +52,6 @@ struct MainScreen: View {
                 }
                 .listStyle(.inset)
             }
-            .onAppear(perform: {
-                // initialize code needed for this screen to displaz properly
-            })
             .padding()
         }
         .toolbar {
