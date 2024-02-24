@@ -15,7 +15,8 @@ class ChapterManager : ObservableObject {
         Chapter(name: "chapter 4", date: Date()),
     ]
     
-    func getAllChapter() -> [Chapter] {
-        return chapterList
+    // update chapter list with the latest data from the database
+    func updateChapterList() {
+        
     }
 }

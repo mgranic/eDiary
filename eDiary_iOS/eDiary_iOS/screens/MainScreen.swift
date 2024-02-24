@@ -21,7 +21,7 @@ struct MainScreen: View {
                         .font(.system(.title2, design: .rounded))
                     Image(systemName: "plus.circle.fill")
                 }
-                .sheet(isPresented: $showCreateChapterSheet, onDismiss: { /*update list of chapters*/ }) {  
+                .sheet(isPresented: $showCreateChapterSheet, onDismiss: { /*update list of chapters*/ }) {
                     // create chapter sheet
                     CreateChapterView()
                 }
