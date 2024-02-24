@@ -15,6 +15,7 @@
 		209E52BB2B85E401009B1760 /* eDiary_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209E52BA2B85E401009B1760 /* eDiary_iOSUITests.swift */; };
 		209E52BD2B85E401009B1760 /* eDiary_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209E52BC2B85E401009B1760 /* eDiary_iOSUITestsLaunchTests.swift */; };
 		209E52CC2B85E485009B1760 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209E52CB2B85E485009B1760 /* Chapter.swift */; };
+		20E9A0452B89DAC300D47216 /* ChapterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E9A0442B89DAC300D47216 /* ChapterManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		209E52BA2B85E401009B1760 /* eDiary_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eDiary_iOSUITests.swift; sourceTree = "<group>"; };
 		209E52BC2B85E401009B1760 /* eDiary_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eDiary_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		209E52CB2B85E485009B1760 /* Chapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
+		20E9A0442B89DAC300D47216 /* ChapterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 		209E529E2B85E400009B1760 /* eDiary_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				20E9A0432B89DA6200D47216 /* viewmodel */,
 				209E52CA2B85E468009B1760 /* model */,
 				209E52C92B85E40F009B1760 /* screens */,
 				209E529F2B85E400009B1760 /* eDiary_iOSApp.swift */,
@@ -144,6 +147,14 @@
 				209E52CB2B85E485009B1760 /* Chapter.swift */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		20E9A0432B89DA6200D47216 /* viewmodel */ = {
+			isa = PBXGroup;
+			children = (
+				20E9A0442B89DAC300D47216 /* ChapterManager.swift */,
+			);
+			path = viewmodel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				209E52CC2B85E485009B1760 /* Chapter.swift in Sources */,
+				20E9A0452B89DAC300D47216 /* ChapterManager.swift in Sources */,
 				209E52A22B85E400009B1760 /* MainScreen.swift in Sources */,
 				209E52A02B85E400009B1760 /* eDiary_iOSApp.swift in Sources */,
 			);
