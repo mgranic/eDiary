@@ -30,17 +30,15 @@ struct MainScreen: View {
                     .foregroundColor(.purple)
                 List {
                     ForEach(chapterManager.chapterList) { chapter in
-                        HStack {
-                            Text("\(chapter.name)")
-                                .font(.title3)
-                            Spacer()
-                            Text("\(chapter.date)")
-                                .font(.title3)
-                        }
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            // navigate to ChapterDetailsScreen
-                            // for navigation add navigation link or use this to show sheet
+                        NavigationLink(destination: ChapterDetailsScreen()) {
+                            HStack {
+                                Text("\(chapter.name)")
+                                    .font(.title3)
+                                Spacer()
+                                Text("\(chapter.date)")
+                                    .font(.title3)
+                            }
+                            .contentShape(Rectangle())
                         }
                     }
                 }
