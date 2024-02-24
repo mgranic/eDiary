@@ -9,17 +9,23 @@ import SwiftUI
 
 struct MainScreen: View {
     @StateObject var chapterManager = ChapterManager()
+    @State var showCreateChapterSheet: Bool = false   // toggle create chapter form
     var body: some View {
         NavigationStack {
             VStack {
                 Button(action: {
                     // show sheet to create new chapter
+                    showCreateChapterSheet.toggle()
                 }) {
                     Text("Add chapter")
                         .font(.system(.title2, design: .rounded))
                     Image(systemName: "plus.circle.fill")
                 }
-                Text("Expense list")
+                .sheet(isPresented: $showCreateChapterSheet, onDismiss: { /*update list of chapters*/ }) {  
+                    // create chapter sheet
+                    CreateChapterView()
+                }
+                Text("Chapter list")
                     .font(.system(.title2, design: .rounded))
                     .foregroundColor(.purple)
                 List {

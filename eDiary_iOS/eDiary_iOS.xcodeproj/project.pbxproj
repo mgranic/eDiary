@@ -16,6 +16,7 @@
 		209E52BD2B85E401009B1760 /* eDiary_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209E52BC2B85E401009B1760 /* eDiary_iOSUITestsLaunchTests.swift */; };
 		209E52CC2B85E485009B1760 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209E52CB2B85E485009B1760 /* Chapter.swift */; };
 		20E9A0452B89DAC300D47216 /* ChapterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E9A0442B89DAC300D47216 /* ChapterManager.swift */; };
+		20E9A0472B8A267600D47216 /* CreateChapterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E9A0462B8A267600D47216 /* CreateChapterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		209E52BC2B85E401009B1760 /* eDiary_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eDiary_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		209E52CB2B85E485009B1760 /* Chapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 		20E9A0442B89DAC300D47216 /* ChapterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterManager.swift; sourceTree = "<group>"; };
+		20E9A0462B8A267600D47216 /* CreateChapterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChapterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				209E52A12B85E400009B1760 /* MainScreen.swift */,
+				20E9A0462B8A267600D47216 /* CreateChapterView.swift */,
 			);
 			path = screens;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				209E52CC2B85E485009B1760 /* Chapter.swift in Sources */,
+				20E9A0472B8A267600D47216 /* CreateChapterView.swift in Sources */,
 				20E9A0452B89DAC300D47216 /* ChapterManager.swift in Sources */,
 				209E52A22B85E400009B1760 /* MainScreen.swift in Sources */,
 				209E52A02B85E400009B1760 /* eDiary_iOSApp.swift in Sources */,
