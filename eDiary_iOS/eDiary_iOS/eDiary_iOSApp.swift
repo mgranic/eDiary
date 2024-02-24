@@ -14,6 +14,6 @@ struct eDiary_iOSApp: App {
         WindowGroup {
             MainScreen()
         }
-        .modelContainer(for: [Chapter.self])
+        .modelContainer(for: [Chapter.self, Event.self])
     }
 }
