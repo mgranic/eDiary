@@ -2,7 +2,7 @@
 //  eDiary_iOSTests.swift
 //  eDiary_iOSTests
 //
-//  Created by Mate Granic on 03.02.2024..
+//  Created by Mate Granic on 21.02.2024..
 //
 
 import XCTest

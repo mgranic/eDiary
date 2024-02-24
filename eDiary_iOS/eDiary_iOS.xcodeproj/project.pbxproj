@@ -7,63 +7,63 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		20B7DED42B6ED765007FC5E4 /* eDiary_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B7DED32B6ED765007FC5E4 /* eDiary_iOSApp.swift */; };
-		20B7DED62B6ED765007FC5E4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B7DED52B6ED765007FC5E4 /* ContentView.swift */; };
-		20B7DED82B6ED765007FC5E4 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B7DED72B6ED765007FC5E4 /* Item.swift */; };
-		20B7DEDA2B6ED767007FC5E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20B7DED92B6ED767007FC5E4 /* Assets.xcassets */; };
-		20B7DEDD2B6ED767007FC5E4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20B7DEDC2B6ED767007FC5E4 /* Preview Assets.xcassets */; };
-		20B7DEE72B6ED767007FC5E4 /* eDiary_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B7DEE62B6ED767007FC5E4 /* eDiary_iOSTests.swift */; };
-		20B7DEF12B6ED767007FC5E4 /* eDiary_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B7DEF02B6ED767007FC5E4 /* eDiary_iOSUITests.swift */; };
-		20B7DEF32B6ED767007FC5E4 /* eDiary_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B7DEF22B6ED767007FC5E4 /* eDiary_iOSUITestsLaunchTests.swift */; };
+		209E52A02B85E400009B1760 /* eDiary_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209E529F2B85E400009B1760 /* eDiary_iOSApp.swift */; };
+		209E52A22B85E400009B1760 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209E52A12B85E400009B1760 /* MainScreen.swift */; };
+		209E52A42B85E401009B1760 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 209E52A32B85E401009B1760 /* Assets.xcassets */; };
+		209E52A72B85E401009B1760 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 209E52A62B85E401009B1760 /* Preview Assets.xcassets */; };
+		209E52B12B85E401009B1760 /* eDiary_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209E52B02B85E401009B1760 /* eDiary_iOSTests.swift */; };
+		209E52BB2B85E401009B1760 /* eDiary_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209E52BA2B85E401009B1760 /* eDiary_iOSUITests.swift */; };
+		209E52BD2B85E401009B1760 /* eDiary_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209E52BC2B85E401009B1760 /* eDiary_iOSUITestsLaunchTests.swift */; };
+		209E52CC2B85E485009B1760 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209E52CB2B85E485009B1760 /* Chapter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		20B7DEE32B6ED767007FC5E4 /* PBXContainerItemProxy */ = {
+		209E52AD2B85E401009B1760 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 20B7DEC82B6ED765007FC5E4 /* Project object */;
+			containerPortal = 209E52942B85E400009B1760 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 20B7DECF2B6ED765007FC5E4;
+			remoteGlobalIDString = 209E529B2B85E400009B1760;
 			remoteInfo = eDiary_iOS;
 		};
-		20B7DEED2B6ED767007FC5E4 /* PBXContainerItemProxy */ = {
+		209E52B72B85E401009B1760 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 20B7DEC82B6ED765007FC5E4 /* Project object */;
+			containerPortal = 209E52942B85E400009B1760 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 20B7DECF2B6ED765007FC5E4;
+			remoteGlobalIDString = 209E529B2B85E400009B1760;
 			remoteInfo = eDiary_iOS;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		20B7DED02B6ED765007FC5E4 /* eDiary_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eDiary_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		20B7DED32B6ED765007FC5E4 /* eDiary_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eDiary_iOSApp.swift; sourceTree = "<group>"; };
-		20B7DED52B6ED765007FC5E4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		20B7DED72B6ED765007FC5E4 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
-		20B7DED92B6ED767007FC5E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		20B7DEDC2B6ED767007FC5E4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		20B7DEE22B6ED767007FC5E4 /* eDiary_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eDiary_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		20B7DEE62B6ED767007FC5E4 /* eDiary_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eDiary_iOSTests.swift; sourceTree = "<group>"; };
-		20B7DEEC2B6ED767007FC5E4 /* eDiary_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eDiary_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		20B7DEF02B6ED767007FC5E4 /* eDiary_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eDiary_iOSUITests.swift; sourceTree = "<group>"; };
-		20B7DEF22B6ED767007FC5E4 /* eDiary_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eDiary_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		209E529C2B85E400009B1760 /* eDiary_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eDiary_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		209E529F2B85E400009B1760 /* eDiary_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eDiary_iOSApp.swift; sourceTree = "<group>"; };
+		209E52A12B85E400009B1760 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
+		209E52A32B85E401009B1760 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		209E52A62B85E401009B1760 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		209E52AC2B85E401009B1760 /* eDiary_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eDiary_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		209E52B02B85E401009B1760 /* eDiary_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eDiary_iOSTests.swift; sourceTree = "<group>"; };
+		209E52B62B85E401009B1760 /* eDiary_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eDiary_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		209E52BA2B85E401009B1760 /* eDiary_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eDiary_iOSUITests.swift; sourceTree = "<group>"; };
+		209E52BC2B85E401009B1760 /* eDiary_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eDiary_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		209E52CB2B85E485009B1760 /* Chapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		20B7DECD2B6ED765007FC5E4 /* Frameworks */ = {
+		209E52992B85E400009B1760 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		20B7DEDF2B6ED767007FC5E4 /* Frameworks */ = {
+		209E52A92B85E401009B1760 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		20B7DEE92B6ED767007FC5E4 /* Frameworks */ = {
+		209E52B32B85E401009B1760 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -73,75 +73,75 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		20B7DEC72B6ED765007FC5E4 = {
+		209E52932B85E400009B1760 = {
 			isa = PBXGroup;
 			children = (
-				20B7DED22B6ED765007FC5E4 /* eDiary_iOS */,
-				20B7DEE52B6ED767007FC5E4 /* eDiary_iOSTests */,
-				20B7DEEF2B6ED767007FC5E4 /* eDiary_iOSUITests */,
-				20B7DED12B6ED765007FC5E4 /* Products */,
+				209E529E2B85E400009B1760 /* eDiary_iOS */,
+				209E52AF2B85E401009B1760 /* eDiary_iOSTests */,
+				209E52B92B85E401009B1760 /* eDiary_iOSUITests */,
+				209E529D2B85E400009B1760 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		20B7DED12B6ED765007FC5E4 /* Products */ = {
+		209E529D2B85E400009B1760 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				20B7DED02B6ED765007FC5E4 /* eDiary_iOS.app */,
-				20B7DEE22B6ED767007FC5E4 /* eDiary_iOSTests.xctest */,
-				20B7DEEC2B6ED767007FC5E4 /* eDiary_iOSUITests.xctest */,
+				209E529C2B85E400009B1760 /* eDiary_iOS.app */,
+				209E52AC2B85E401009B1760 /* eDiary_iOSTests.xctest */,
+				209E52B62B85E401009B1760 /* eDiary_iOSUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		20B7DED22B6ED765007FC5E4 /* eDiary_iOS */ = {
+		209E529E2B85E400009B1760 /* eDiary_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				20B7DF002B6ED784007FC5E4 /* model */,
-				20B7DEFF2B6ED774007FC5E4 /* screens */,
-				20B7DED32B6ED765007FC5E4 /* eDiary_iOSApp.swift */,
-				20B7DED52B6ED765007FC5E4 /* ContentView.swift */,
-				20B7DED72B6ED765007FC5E4 /* Item.swift */,
-				20B7DED92B6ED767007FC5E4 /* Assets.xcassets */,
-				20B7DEDB2B6ED767007FC5E4 /* Preview Content */,
+				209E52CA2B85E468009B1760 /* model */,
+				209E52C92B85E40F009B1760 /* screens */,
+				209E529F2B85E400009B1760 /* eDiary_iOSApp.swift */,
+				209E52A32B85E401009B1760 /* Assets.xcassets */,
+				209E52A52B85E401009B1760 /* Preview Content */,
 			);
 			path = eDiary_iOS;
 			sourceTree = "<group>";
 		};
-		20B7DEDB2B6ED767007FC5E4 /* Preview Content */ = {
+		209E52A52B85E401009B1760 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				20B7DEDC2B6ED767007FC5E4 /* Preview Assets.xcassets */,
+				209E52A62B85E401009B1760 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		20B7DEE52B6ED767007FC5E4 /* eDiary_iOSTests */ = {
+		209E52AF2B85E401009B1760 /* eDiary_iOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				20B7DEE62B6ED767007FC5E4 /* eDiary_iOSTests.swift */,
+				209E52B02B85E401009B1760 /* eDiary_iOSTests.swift */,
 			);
 			path = eDiary_iOSTests;
 			sourceTree = "<group>";
 		};
-		20B7DEEF2B6ED767007FC5E4 /* eDiary_iOSUITests */ = {
+		209E52B92B85E401009B1760 /* eDiary_iOSUITests */ = {
 			isa = PBXGroup;
 			children = (
-				20B7DEF02B6ED767007FC5E4 /* eDiary_iOSUITests.swift */,
-				20B7DEF22B6ED767007FC5E4 /* eDiary_iOSUITestsLaunchTests.swift */,
+				209E52BA2B85E401009B1760 /* eDiary_iOSUITests.swift */,
+				209E52BC2B85E401009B1760 /* eDiary_iOSUITestsLaunchTests.swift */,
 			);
 			path = eDiary_iOSUITests;
 			sourceTree = "<group>";
 		};
-		20B7DEFF2B6ED774007FC5E4 /* screens */ = {
+		209E52C92B85E40F009B1760 /* screens */ = {
 			isa = PBXGroup;
 			children = (
+				209E52A12B85E400009B1760 /* MainScreen.swift */,
 			);
 			path = screens;
 			sourceTree = "<group>";
 		};
-		20B7DF002B6ED784007FC5E4 /* model */ = {
+		209E52CA2B85E468009B1760 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				209E52CB2B85E485009B1760 /* Chapter.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -149,13 +149,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		20B7DECF2B6ED765007FC5E4 /* eDiary_iOS */ = {
+		209E529B2B85E400009B1760 /* eDiary_iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 20B7DEF62B6ED767007FC5E4 /* Build configuration list for PBXNativeTarget "eDiary_iOS" */;
+			buildConfigurationList = 209E52C02B85E401009B1760 /* Build configuration list for PBXNativeTarget "eDiary_iOS" */;
 			buildPhases = (
-				20B7DECC2B6ED765007FC5E4 /* Sources */,
-				20B7DECD2B6ED765007FC5E4 /* Frameworks */,
-				20B7DECE2B6ED765007FC5E4 /* Resources */,
+				209E52982B85E400009B1760 /* Sources */,
+				209E52992B85E400009B1760 /* Frameworks */,
+				209E529A2B85E400009B1760 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -163,69 +163,69 @@
 			);
 			name = eDiary_iOS;
 			productName = eDiary_iOS;
-			productReference = 20B7DED02B6ED765007FC5E4 /* eDiary_iOS.app */;
+			productReference = 209E529C2B85E400009B1760 /* eDiary_iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		20B7DEE12B6ED767007FC5E4 /* eDiary_iOSTests */ = {
+		209E52AB2B85E401009B1760 /* eDiary_iOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 20B7DEF92B6ED767007FC5E4 /* Build configuration list for PBXNativeTarget "eDiary_iOSTests" */;
+			buildConfigurationList = 209E52C32B85E401009B1760 /* Build configuration list for PBXNativeTarget "eDiary_iOSTests" */;
 			buildPhases = (
-				20B7DEDE2B6ED767007FC5E4 /* Sources */,
-				20B7DEDF2B6ED767007FC5E4 /* Frameworks */,
-				20B7DEE02B6ED767007FC5E4 /* Resources */,
+				209E52A82B85E401009B1760 /* Sources */,
+				209E52A92B85E401009B1760 /* Frameworks */,
+				209E52AA2B85E401009B1760 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				20B7DEE42B6ED767007FC5E4 /* PBXTargetDependency */,
+				209E52AE2B85E401009B1760 /* PBXTargetDependency */,
 			);
 			name = eDiary_iOSTests;
 			productName = eDiary_iOSTests;
-			productReference = 20B7DEE22B6ED767007FC5E4 /* eDiary_iOSTests.xctest */;
+			productReference = 209E52AC2B85E401009B1760 /* eDiary_iOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		20B7DEEB2B6ED767007FC5E4 /* eDiary_iOSUITests */ = {
+		209E52B52B85E401009B1760 /* eDiary_iOSUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 20B7DEFC2B6ED767007FC5E4 /* Build configuration list for PBXNativeTarget "eDiary_iOSUITests" */;
+			buildConfigurationList = 209E52C62B85E401009B1760 /* Build configuration list for PBXNativeTarget "eDiary_iOSUITests" */;
 			buildPhases = (
-				20B7DEE82B6ED767007FC5E4 /* Sources */,
-				20B7DEE92B6ED767007FC5E4 /* Frameworks */,
-				20B7DEEA2B6ED767007FC5E4 /* Resources */,
+				209E52B22B85E401009B1760 /* Sources */,
+				209E52B32B85E401009B1760 /* Frameworks */,
+				209E52B42B85E401009B1760 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				20B7DEEE2B6ED767007FC5E4 /* PBXTargetDependency */,
+				209E52B82B85E401009B1760 /* PBXTargetDependency */,
 			);
 			name = eDiary_iOSUITests;
 			productName = eDiary_iOSUITests;
-			productReference = 20B7DEEC2B6ED767007FC5E4 /* eDiary_iOSUITests.xctest */;
+			productReference = 209E52B62B85E401009B1760 /* eDiary_iOSUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		20B7DEC82B6ED765007FC5E4 /* Project object */ = {
+		209E52942B85E400009B1760 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
-				LastUpgradeCheck = 1500;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
 				TargetAttributes = {
-					20B7DECF2B6ED765007FC5E4 = {
-						CreatedOnToolsVersion = 15.0.1;
+					209E529B2B85E400009B1760 = {
+						CreatedOnToolsVersion = 15.2;
 					};
-					20B7DEE12B6ED767007FC5E4 = {
-						CreatedOnToolsVersion = 15.0.1;
-						TestTargetID = 20B7DECF2B6ED765007FC5E4;
+					209E52AB2B85E401009B1760 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 209E529B2B85E400009B1760;
 					};
-					20B7DEEB2B6ED767007FC5E4 = {
-						CreatedOnToolsVersion = 15.0.1;
-						TestTargetID = 20B7DECF2B6ED765007FC5E4;
+					209E52B52B85E401009B1760 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 209E529B2B85E400009B1760;
 					};
 				};
 			};
-			buildConfigurationList = 20B7DECB2B6ED765007FC5E4 /* Build configuration list for PBXProject "eDiary_iOS" */;
+			buildConfigurationList = 209E52972B85E400009B1760 /* Build configuration list for PBXProject "eDiary_iOS" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -233,36 +233,36 @@
 				en,
 				Base,
 			);
-			mainGroup = 20B7DEC72B6ED765007FC5E4;
-			productRefGroup = 20B7DED12B6ED765007FC5E4 /* Products */;
+			mainGroup = 209E52932B85E400009B1760;
+			productRefGroup = 209E529D2B85E400009B1760 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				20B7DECF2B6ED765007FC5E4 /* eDiary_iOS */,
-				20B7DEE12B6ED767007FC5E4 /* eDiary_iOSTests */,
-				20B7DEEB2B6ED767007FC5E4 /* eDiary_iOSUITests */,
+				209E529B2B85E400009B1760 /* eDiary_iOS */,
+				209E52AB2B85E401009B1760 /* eDiary_iOSTests */,
+				209E52B52B85E401009B1760 /* eDiary_iOSUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		20B7DECE2B6ED765007FC5E4 /* Resources */ = {
+		209E529A2B85E400009B1760 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20B7DEDD2B6ED767007FC5E4 /* Preview Assets.xcassets in Resources */,
-				20B7DEDA2B6ED767007FC5E4 /* Assets.xcassets in Resources */,
+				209E52A72B85E401009B1760 /* Preview Assets.xcassets in Resources */,
+				209E52A42B85E401009B1760 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		20B7DEE02B6ED767007FC5E4 /* Resources */ = {
+		209E52AA2B85E401009B1760 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		20B7DEEA2B6ED767007FC5E4 /* Resources */ = {
+		209E52B42B85E401009B1760 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -272,50 +272,50 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		20B7DECC2B6ED765007FC5E4 /* Sources */ = {
+		209E52982B85E400009B1760 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20B7DED62B6ED765007FC5E4 /* ContentView.swift in Sources */,
-				20B7DED82B6ED765007FC5E4 /* Item.swift in Sources */,
-				20B7DED42B6ED765007FC5E4 /* eDiary_iOSApp.swift in Sources */,
+				209E52CC2B85E485009B1760 /* Chapter.swift in Sources */,
+				209E52A22B85E400009B1760 /* MainScreen.swift in Sources */,
+				209E52A02B85E400009B1760 /* eDiary_iOSApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		20B7DEDE2B6ED767007FC5E4 /* Sources */ = {
+		209E52A82B85E401009B1760 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20B7DEE72B6ED767007FC5E4 /* eDiary_iOSTests.swift in Sources */,
+				209E52B12B85E401009B1760 /* eDiary_iOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		20B7DEE82B6ED767007FC5E4 /* Sources */ = {
+		209E52B22B85E401009B1760 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20B7DEF32B6ED767007FC5E4 /* eDiary_iOSUITestsLaunchTests.swift in Sources */,
-				20B7DEF12B6ED767007FC5E4 /* eDiary_iOSUITests.swift in Sources */,
+				209E52BD2B85E401009B1760 /* eDiary_iOSUITestsLaunchTests.swift in Sources */,
+				209E52BB2B85E401009B1760 /* eDiary_iOSUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		20B7DEE42B6ED767007FC5E4 /* PBXTargetDependency */ = {
+		209E52AE2B85E401009B1760 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 20B7DECF2B6ED765007FC5E4 /* eDiary_iOS */;
-			targetProxy = 20B7DEE32B6ED767007FC5E4 /* PBXContainerItemProxy */;
+			target = 209E529B2B85E400009B1760 /* eDiary_iOS */;
+			targetProxy = 209E52AD2B85E401009B1760 /* PBXContainerItemProxy */;
 		};
-		20B7DEEE2B6ED767007FC5E4 /* PBXTargetDependency */ = {
+		209E52B82B85E401009B1760 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 20B7DECF2B6ED765007FC5E4 /* eDiary_iOS */;
-			targetProxy = 20B7DEED2B6ED767007FC5E4 /* PBXContainerItemProxy */;
+			target = 209E529B2B85E400009B1760 /* eDiary_iOS */;
+			targetProxy = 209E52B72B85E401009B1760 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		20B7DEF42B6ED767007FC5E4 /* Debug */ = {
+		209E52BE2B85E401009B1760 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -367,7 +367,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -378,7 +378,7 @@
 			};
 			name = Debug;
 		};
-		20B7DEF52B6ED767007FC5E4 /* Release */ = {
+		209E52BF2B85E401009B1760 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -424,7 +424,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -434,7 +434,7 @@
 			};
 			name = Release;
 		};
-		20B7DEF72B6ED767007FC5E4 /* Debug */ = {
+		209E52C12B85E401009B1760 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -463,7 +463,7 @@
 			};
 			name = Debug;
 		};
-		20B7DEF82B6ED767007FC5E4 /* Release */ = {
+		209E52C22B85E401009B1760 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -492,7 +492,7 @@
 			};
 			name = Release;
 		};
-		20B7DEFA2B6ED767007FC5E4 /* Debug */ = {
+		209E52C42B85E401009B1760 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -501,7 +501,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6LP5U8F7VW;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kingoapps.eDiary-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -512,7 +512,7 @@
 			};
 			name = Debug;
 		};
-		20B7DEFB2B6ED767007FC5E4 /* Release */ = {
+		209E52C52B85E401009B1760 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -521,7 +521,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6LP5U8F7VW;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kingoapps.eDiary-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -532,7 +532,7 @@
 			};
 			name = Release;
 		};
-		20B7DEFD2B6ED767007FC5E4 /* Debug */ = {
+		209E52C72B85E401009B1760 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -550,7 +550,7 @@
 			};
 			name = Debug;
 		};
-		20B7DEFE2B6ED767007FC5E4 /* Release */ = {
+		209E52C82B85E401009B1760 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -571,43 +571,43 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		20B7DECB2B6ED765007FC5E4 /* Build configuration list for PBXProject "eDiary_iOS" */ = {
+		209E52972B85E400009B1760 /* Build configuration list for PBXProject "eDiary_iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				20B7DEF42B6ED767007FC5E4 /* Debug */,
-				20B7DEF52B6ED767007FC5E4 /* Release */,
+				209E52BE2B85E401009B1760 /* Debug */,
+				209E52BF2B85E401009B1760 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		20B7DEF62B6ED767007FC5E4 /* Build configuration list for PBXNativeTarget "eDiary_iOS" */ = {
+		209E52C02B85E401009B1760 /* Build configuration list for PBXNativeTarget "eDiary_iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				20B7DEF72B6ED767007FC5E4 /* Debug */,
-				20B7DEF82B6ED767007FC5E4 /* Release */,
+				209E52C12B85E401009B1760 /* Debug */,
+				209E52C22B85E401009B1760 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		20B7DEF92B6ED767007FC5E4 /* Build configuration list for PBXNativeTarget "eDiary_iOSTests" */ = {
+		209E52C32B85E401009B1760 /* Build configuration list for PBXNativeTarget "eDiary_iOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				20B7DEFA2B6ED767007FC5E4 /* Debug */,
-				20B7DEFB2B6ED767007FC5E4 /* Release */,
+				209E52C42B85E401009B1760 /* Debug */,
+				209E52C52B85E401009B1760 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		20B7DEFC2B6ED767007FC5E4 /* Build configuration list for PBXNativeTarget "eDiary_iOSUITests" */ = {
+		209E52C62B85E401009B1760 /* Build configuration list for PBXNativeTarget "eDiary_iOSUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				20B7DEFD2B6ED767007FC5E4 /* Debug */,
-				20B7DEFE2B6ED767007FC5E4 /* Release */,
+				209E52C72B85E401009B1760 /* Debug */,
+				209E52C82B85E401009B1760 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 20B7DEC82B6ED765007FC5E4 /* Project object */;
+	rootObject = 209E52942B85E400009B1760 /* Project object */;
 }
