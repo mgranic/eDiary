@@ -36,7 +36,7 @@ struct MainScreen: View {
                 Text("Chapter list")
                     .font(.system(.title2, design: .rounded))
                     .foregroundColor(.purple)
-                List {
+                List { //}($chapterManager.chapterList, editActions: .delete) { $chapter in
                     ForEach(chapterManager.chapterList) { chapter in
                         NavigationLink(destination: ChapterDetailsScreen()) {
                             HStack {
@@ -48,9 +48,19 @@ struct MainScreen: View {
                             }
                             .contentShape(Rectangle())
                         }
+                        .swipeActions {
+                            Button("Delete", role: .destructive) {
+                                chapterManager.deleteById(dbId: chapter.id, modelCtx: modelCtx)
+                            }
+                            
+                        }
                     }
+                    //.onDelete(perform: )
                 }
                 .listStyle(.inset)
+                .alert(isPresented: $chapterManager.databaseOperationFailed) {
+                    Alert(title: Text("Failed to complete!!! Something went wrong with the database"))
+                }
             }
             .padding()
         }

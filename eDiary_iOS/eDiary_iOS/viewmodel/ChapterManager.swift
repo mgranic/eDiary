@@ -10,6 +10,7 @@ import SwiftData
 
 class ChapterManager : ObservableObject {
     @Published var chapterList: [Chapter] = []
+    @Published var databaseOperationFailed = false
     //= [
     //    Chapter(name: "chapter 1", date: Date()),
     //    Chapter(name: "chapter 2", date: Date()),
@@ -23,13 +24,27 @@ class ChapterManager : ObservableObject {
         let descriptor = FetchDescriptor<Chapter>(sortBy: [SortDescriptor(\Chapter.date, order: .reverse)])
         do {
             try chapterList = modelCtx.fetch(descriptor)
+            databaseOperationFailed = false
         } catch {
-            // TODO: handle error properly
+            databaseOperationFailed = true
         }
     }
     
     // create Chapter based on the parameters and store it into the database
     func createChapter(name: String, date: Date, modelCtx: ModelContext) {
         modelCtx.insert(Chapter(name: name, date: date))
+    }
+    
+    // delete chapter with ID specified by function parameter from database
+    func deleteById(dbId: UUID, modelCtx: ModelContext) {
+        do {
+            // delete from database
+            try modelCtx.delete(model: Chapter.self, where: #Predicate { chapter in chapter.id == dbId })
+            // delete from list view
+            chapterList.removeAll(where: { chapter in chapter.id == dbId})
+            databaseOperationFailed = false
+        } catch {
+            databaseOperationFailed = true
+        }
     }
 }
