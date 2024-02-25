@@ -38,7 +38,7 @@ struct MainScreen: View {
                     .foregroundColor(.purple)
                 List { //}($chapterManager.chapterList, editActions: .delete) { $chapter in
                     ForEach(chapterManager.chapterList) { chapter in
-                        NavigationLink(destination: ChapterDetailsScreen()) {
+                        NavigationLink(destination: ChapterDetailsScreen(name: State(initialValue: chapter.name), date: State(initialValue: chapter.date))) {
                             HStack {
                                 Text("\(chapter.name)")
                                     .font(.title3)
