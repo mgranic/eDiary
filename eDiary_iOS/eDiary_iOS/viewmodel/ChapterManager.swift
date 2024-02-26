@@ -31,8 +31,8 @@ class ChapterManager : ObservableObject {
     }
     
     // create Chapter based on the parameters and store it into the database
-    func createChapter(name: String, date: Date, modelCtx: ModelContext) {
-        modelCtx.insert(Chapter(name: name, date: date))
+    func createChapter(name: String, date: Date, description: String, modelCtx: ModelContext) {
+        modelCtx.insert(Chapter(name: name, date: date, description: description))
     }
     
     // delete chapter with ID specified by function parameter from database

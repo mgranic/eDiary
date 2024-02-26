@@ -12,6 +12,7 @@ struct CreateChapterView: View {
     @Environment(\.modelContext) var modelCtx
     @State var name: String = ""
     @State var date: Date = Date()
+    @State var description: String = ""
     
     var body: some View {
         Form {
@@ -20,6 +21,12 @@ struct CreateChapterView: View {
                     Text("Name")
                     TextField("Name", text: $name)
                 }
+            }
+            Section {
+                TextEditor(text: $description)
+                    .foregroundStyle(.secondary)
+                    .padding(.horizontal)
+                    .navigationTitle("Description")
             }
             Section {
                 DatePicker (
@@ -33,7 +40,7 @@ struct CreateChapterView: View {
                     Section {
                         Button("Submit") {
                             let chapterManager = ChapterManager()
-                            chapterManager.createChapter(name: name, date: date, modelCtx: modelCtx)
+                            chapterManager.createChapter(name: name, date: date, description: description, modelCtx: modelCtx)
                             dismiss()
                         }
                         .buttonStyle(.bordered)
