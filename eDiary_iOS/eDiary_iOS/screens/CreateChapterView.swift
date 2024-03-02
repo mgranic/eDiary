@@ -22,11 +22,12 @@ struct CreateChapterView: View {
                     TextField("Name", text: $name)
                 }
             }
-            Section {
+            Section(header: Text("Chapter description")) {
                 TextEditor(text: $description)
                     .foregroundStyle(.secondary)
                     .padding(.horizontal)
                     .navigationTitle("Description")
+                    .frame(minHeight: UIScreen.main.bounds.height * 0.3, maxHeight: UIScreen.main.bounds.height * 0.3)
             }
             Section {
                 DatePicker (
