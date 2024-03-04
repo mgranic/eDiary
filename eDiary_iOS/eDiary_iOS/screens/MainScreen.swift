@@ -18,7 +18,7 @@ struct MainScreen: View {
                     // show sheet to create new chapter
                     showCreateChapterSheet.toggle()
                 }) {
-                    Text("Add chapter")
+                    Text("Create chapter")
                         .font(.system(.title2, design: .rounded))
                     Image(systemName: "plus.circle.fill")
                 }
