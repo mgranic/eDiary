@@ -11,12 +11,6 @@ import SwiftData
 class ChapterManager : ObservableObject {
     @Published var chapterList: [Chapter] = []
     @Published var databaseOperationFailed = false
-    //= [
-    //    Chapter(name: "chapter 1", date: Date()),
-    //    Chapter(name: "chapter 2", date: Date()),
-    //    Chapter(name: "chapter 3", date: Date()),
-    //    Chapter(name: "chapter 4", date: Date()),
-    //]
     
     
     // update chapter list with the latest data from the database

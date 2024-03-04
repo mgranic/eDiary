@@ -15,6 +15,7 @@
 		209E52BB2B85E401009B1760 /* eDiary_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209E52BA2B85E401009B1760 /* eDiary_iOSUITests.swift */; };
 		209E52BD2B85E401009B1760 /* eDiary_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209E52BC2B85E401009B1760 /* eDiary_iOSUITestsLaunchTests.swift */; };
 		209E52CC2B85E485009B1760 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209E52CB2B85E485009B1760 /* Chapter.swift */; };
+		20BFB3FD2B985DA600CB299C /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BFB3FC2B985DA600CB299C /* EventManager.swift */; };
 		20BFD6AB2B8A4B7B00BBDDBC /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BFD6AA2B8A4B7B00BBDDBC /* Event.swift */; };
 		20BFD6AD2B8A4D9600BBDDBC /* ChapterDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BFD6AC2B8A4D9600BBDDBC /* ChapterDetailsScreen.swift */; };
 		20E9A0452B89DAC300D47216 /* ChapterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E9A0442B89DAC300D47216 /* ChapterManager.swift */; };
@@ -51,6 +52,7 @@
 		209E52BA2B85E401009B1760 /* eDiary_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eDiary_iOSUITests.swift; sourceTree = "<group>"; };
 		209E52BC2B85E401009B1760 /* eDiary_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eDiary_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		209E52CB2B85E485009B1760 /* Chapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
+		20BFB3FC2B985DA600CB299C /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		20BFD6AA2B8A4B7B00BBDDBC /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		20BFD6AC2B8A4D9600BBDDBC /* ChapterDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterDetailsScreen.swift; sourceTree = "<group>"; };
 		20E9A0442B89DAC300D47216 /* ChapterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterManager.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				20E9A0442B89DAC300D47216 /* ChapterManager.swift */,
+				20BFB3FC2B985DA600CB299C /* EventManager.swift */,
 			);
 			path = viewmodel;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20BFB3FD2B985DA600CB299C /* EventManager.swift in Sources */,
 				209E52CC2B85E485009B1760 /* Chapter.swift in Sources */,
 				20F35F9C2B962A0D00E54122 /* CreateEventView.swift in Sources */,
 				20E9A0472B8A267600D47216 /* CreateChapterView.swift in Sources */,
