@@ -53,12 +53,19 @@ struct ChapterDetailsScreen: View {
                 )
                 
                 Text("Event list")
-                // add list of events for this chapter
-                ForEach(eventManager.eventList) { event in
-                    VStack {
-                        Text(event.name)
+                VStack {
+                    // add list of events for this chapter
+                    ForEach(eventManager.eventList) { event in
+                        NavigationLink(destination: EventDetailsScreen()) {
+                            VStack {
+                                Text(event.name)
+                            }
+                            .frame(minWidth: UIScreen.main.bounds.width * 0.9, maxWidth: UIScreen.main.bounds.width * 0.9, minHeight: UIScreen.main.bounds.height * 0.4, maxHeight: UIScreen.main.bounds.height * 0.4)
+                            .border(.blue, width: 5)
+                            .cornerRadius(20)
+                        }
+                        
                     }
-                    .frame(minHeight: UIScreen.main.bounds.height * 0.4, maxHeight: UIScreen.main.bounds.height * 0.4)
                 }
             }
             .onAppear {

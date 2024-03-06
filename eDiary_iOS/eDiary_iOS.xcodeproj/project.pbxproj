@@ -18,6 +18,7 @@
 		20BFB3FD2B985DA600CB299C /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BFB3FC2B985DA600CB299C /* EventManager.swift */; };
 		20BFD6AB2B8A4B7B00BBDDBC /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BFD6AA2B8A4B7B00BBDDBC /* Event.swift */; };
 		20BFD6AD2B8A4D9600BBDDBC /* ChapterDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BFD6AC2B8A4D9600BBDDBC /* ChapterDetailsScreen.swift */; };
+		20D0CFF12B9B5EA500A7540A /* EventDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D0CFF02B9B5EA500A7540A /* EventDetailsScreen.swift */; };
 		20E9A0452B89DAC300D47216 /* ChapterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E9A0442B89DAC300D47216 /* ChapterManager.swift */; };
 		20E9A0472B8A267600D47216 /* CreateChapterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E9A0462B8A267600D47216 /* CreateChapterView.swift */; };
 		20F35F9C2B962A0D00E54122 /* CreateEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F35F9B2B962A0D00E54122 /* CreateEventView.swift */; };
@@ -55,6 +56,7 @@
 		20BFB3FC2B985DA600CB299C /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		20BFD6AA2B8A4B7B00BBDDBC /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		20BFD6AC2B8A4D9600BBDDBC /* ChapterDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterDetailsScreen.swift; sourceTree = "<group>"; };
+		20D0CFF02B9B5EA500A7540A /* EventDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsScreen.swift; sourceTree = "<group>"; };
 		20E9A0442B89DAC300D47216 /* ChapterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterManager.swift; sourceTree = "<group>"; };
 		20E9A0462B8A267600D47216 /* CreateChapterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChapterView.swift; sourceTree = "<group>"; };
 		20F35F9B2B962A0D00E54122 /* CreateEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventView.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				20F35F9D2B962A1400E54122 /* sheets */,
 				209E52A12B85E400009B1760 /* MainScreen.swift */,
 				20BFD6AC2B8A4D9600BBDDBC /* ChapterDetailsScreen.swift */,
+				20D0CFF02B9B5EA500A7540A /* EventDetailsScreen.swift */,
 			);
 			path = screens;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				20E9A0452B89DAC300D47216 /* ChapterManager.swift in Sources */,
 				209E52A22B85E400009B1760 /* MainScreen.swift in Sources */,
 				20BFD6AD2B8A4D9600BBDDBC /* ChapterDetailsScreen.swift in Sources */,
+				20D0CFF12B9B5EA500A7540A /* EventDetailsScreen.swift in Sources */,
 				20BFD6AB2B8A4B7B00BBDDBC /* Event.swift in Sources */,
 				209E52A02B85E400009B1760 /* eDiary_iOSApp.swift in Sources */,
 			);
