@@ -7,6 +7,8 @@
 
 import Foundation
 import SwiftData
+import SwiftUI
+import PhotosUI
 
 class EventManager : ObservableObject {
     
@@ -14,8 +16,19 @@ class EventManager : ObservableObject {
     @Published var databaseOperationFailed = false
     
     // create Event based on the parameters and store it into the database
-    func createEvent(chapterId: UUID, name: String, date: Date, description: String, modelCtx: ModelContext) {
-        modelCtx.insert(Event(chapterId: chapterId, name: name, description: description, date: date))
+    func createEvent(chapterId: UUID, name: String, date: Date, description: String, img: PhotosPickerItem? = nil, modelCtx: ModelContext) async {
+        // if img is not nil
+        if let image = img {
+            do {
+                let imgData = try await image.loadTransferable(type: Data.self)
+                modelCtx.insert(Event(chapterId: chapterId, name: name, description: description, date: date, img: imgData))
+            } catch {
+                databaseOperationFailed = true
+            }
+            
+        } else {
+            modelCtx.insert(Event(chapterId: chapterId, name: name, description: description, date: date))
+        }
     }
     
     // update event list with the latest data from the database
@@ -28,4 +41,7 @@ class EventManager : ObservableObject {
             databaseOperationFailed = true
         }
     }
+    
+    /************************************************************************************PRIVATE FUNCTIONS************************************************************************************/
+    
 }

@@ -59,6 +59,13 @@ struct ChapterDetailsScreen: View {
                         NavigationLink(destination: EventDetailsScreen()) {
                             VStack {
                                 Text(event.name)
+                                if let imgData = event.image {
+                                    if let image = UIImage(data: imgData) {
+                                        Image(uiImage: image)
+                                            .resizable()
+                                            .scaledToFit()
+                                    }
+                                }
                             }
                             .frame(minWidth: UIScreen.main.bounds.width * 0.9, maxWidth: UIScreen.main.bounds.width * 0.9, minHeight: UIScreen.main.bounds.height * 0.4, maxHeight: UIScreen.main.bounds.height * 0.4)
                             .border(.blue, width: 5)

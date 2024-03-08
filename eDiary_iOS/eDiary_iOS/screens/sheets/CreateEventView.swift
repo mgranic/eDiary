@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct CreateEventView: View {
     @Environment(\.dismiss) var dismiss
@@ -13,6 +14,11 @@ struct CreateEventView: View {
     @State var name: String = ""
     @State var date: Date = Date()
     @State var description: String = ""
+    
+    @State private var authorized = PHPhotoLibrary.authorizationStatus()
+    @State private var pickerItem: PhotosPickerItem?
+    @State private var selectedImage: Image?
+    
     var chapterId: UUID
     
     init(chapterId: UUID) {
@@ -42,12 +48,31 @@ struct CreateEventView: View {
                         displayedComponents: [.date]
                     )
                 }
+                
+                if authorized == .authorized {
+                    Section {
+                        PhotosPicker("Select a picture", selection: $pickerItem, matching: .images)
+                            .onChange(of: pickerItem) {
+                                Task {
+                                    selectedImage = try await pickerItem?.loadTransferable(type: Image.self)
+                                }
+                            }
+                        //if selectedImage != nil {
+                        selectedImage?
+                                .resizable()
+                                .scaledToFit()
+                        //}
+                    }
+                }
+                
                 Section {
                     HStack {
                         Section {
                             Button("Submit") {
-                                let eventManager = EventManager()
-                                eventManager.createEvent(chapterId: chapterId, name: name, date: date, description: description, modelCtx: modelCtx)
+                                Task {
+                                    let eventManager = EventManager()
+                                    await eventManager.createEvent(chapterId: chapterId, name: name, date: date, description: description, img: pickerItem, modelCtx: modelCtx)
+                                }
                                 dismiss()
                             }
                             .buttonStyle(.bordered)
@@ -63,6 +88,14 @@ struct CreateEventView: View {
                             .controlSize(.large)
                             .buttonBorderShape(.capsule)
                     }
+                }
+            }
+        }
+        .onAppear {
+            // request gallery access
+            PHPhotoLibrary.requestAuthorization(for: .readWrite) { status in
+                DispatchQueue.main.async {
+                    self.authorized = status
                 }
             }
         }

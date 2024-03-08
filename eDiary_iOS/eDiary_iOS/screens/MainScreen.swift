@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import Photos
 
 struct MainScreen: View {
     @Environment(\.modelContext) var modelCtx
     @StateObject var chapterManager = ChapterManager()
     @State var showCreateChapterSheet: Bool = false   // toggle create chapter form
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -22,7 +24,7 @@ struct MainScreen: View {
                         .font(.system(.title2, design: .rounded))
                     Image(systemName: "plus.circle.fill")
                 }
-                .onAppear {
+                .onAppear { // initialize everything
                     // update list of chapters
                     chapterManager.updateChapterList(modelCtx: modelCtx)
                 }

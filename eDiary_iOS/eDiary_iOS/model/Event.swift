@@ -16,14 +16,16 @@ class Event {
     var desc: String
     var date: Date
     var timestamp: Date
+    @Attribute(.externalStorage) var image: Data?
     
-    init(id: UUID = UUID(), chapterId: UUID, name: String, description: String, date: Date) {
+    init(id: UUID = UUID(), chapterId: UUID, name: String, description: String, date: Date, img: Data? = nil) {
         self.id = id
         self.chapterId = chapterId
         self.name = name
         self.desc = description
         self.date = date
         self.timestamp = Date()
+        self.image = img
     }
     
     // return predicate to filter all events from database that belong to a chapter with chapterId == chId
