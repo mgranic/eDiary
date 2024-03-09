@@ -56,7 +56,7 @@ struct ChapterDetailsScreen: View {
                 VStack {
                     // add list of events for this chapter
                     ForEach(eventManager.eventList) { event in
-                        NavigationLink(destination: EventDetailsScreen()) {
+                        NavigationLink(destination: EventDetailsScreen(name: State(initialValue: event.name), desc: State(initialValue: event.desc), date: State(initialValue: event.date), img: State(initialValue: event.image), id: event.id)) {
                             VStack {
                                 Text(event.name)
                                 if let imgData = event.image {
