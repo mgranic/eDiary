@@ -9,11 +9,15 @@ import SwiftUI
 
 struct EventDetailsScreen: View {
     @Environment(\.dismiss) var dismiss
+    @Environment(\.modelContext) var modelCtx
     
     @State var name: String
     @State var description: String
     @State var date: Date
     @State var img: Data?
+    
+    @State private var showDeleteAlert = false
+    
     var id: UUID
     
     init(name: State<String>, desc: State<String>, date: State<Date>, img: State<Data?>, id: UUID) {
@@ -63,11 +67,26 @@ struct EventDetailsScreen: View {
         .toolbar {
             Button(action: {
                 // delete chapter and show dialog "are you sure"
-                print("delete button pressed")
-                dismiss()
+                showDeleteAlert = true
+                
             }) {
                 Image(systemName: "trash")
             }
         }
+        .alert("Log in", isPresented: $showDeleteAlert) {
+                    Button("Yes", action: submitDelete)
+                    Button("No", role: .cancel) {
+                        showDeleteAlert = false
+                    }
+                } message: {
+                    Text("Are you sure you want to delete event \(name)")
+        }
+    }
+    
+    private func submitDelete() {
+        let evManager = EventManager()
+        evManager.deleteById(dbId: id, modelCtx: modelCtx)
+        showDeleteAlert = false
+        dismiss()
     }
 }

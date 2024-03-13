@@ -42,6 +42,19 @@ class EventManager : ObservableObject {
         }
     }
     
+    // delete event with ID specified by function parameter from database
+    func deleteById(dbId: UUID, modelCtx: ModelContext) {
+        do {
+            // delete from database
+            try modelCtx.delete(model: Event.self, where: #Predicate { event in event.id == dbId })
+            // delete from list view
+            eventList.removeAll(where: { event in event.id == dbId})
+            databaseOperationFailed = false
+        } catch {
+            databaseOperationFailed = true
+        }
+    }
+    
     /************************************************************************************PRIVATE FUNCTIONS************************************************************************************/
     
 }
