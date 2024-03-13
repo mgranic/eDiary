@@ -31,6 +31,27 @@ class EventManager : ObservableObject {
         }
     }
     
+    // edit event with id = eventId
+    func editEvent(eventId: UUID, name: String, date: Date, description: String, img: PhotosPickerItem? = nil, modelCtx: ModelContext) async {
+        let descriptor = Event.searchById(evId: eventId)
+        do {
+            let event = try modelCtx.fetch(descriptor)
+            event.first?.name = name
+            event.first?.date = date
+            event.first?.desc = description
+            
+            // if photospickeritem is passed store it to database
+            if let image = img {
+                let imgData = try await image.loadTransferable(type: Data.self)
+                event.first?.image = imgData
+            }
+            
+            databaseOperationFailed = false
+        } catch {
+            databaseOperationFailed = true
+        }
+    }
+    
     // update event list with the latest data from the database
     func updateEventList(chapterId: UUID, modelCtx: ModelContext) {
         let descriptor = Event.serchByChapterIdSortByDateReverse(chId: chapterId)

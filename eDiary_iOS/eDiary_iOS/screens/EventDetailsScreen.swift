@@ -17,6 +17,7 @@ struct EventDetailsScreen: View {
     @State var img: Data?
     
     @State private var showDeleteAlert = false
+    @State private var showEditSheet = false
     
     var id: UUID
     
@@ -33,20 +34,20 @@ struct EventDetailsScreen: View {
             VStack {
                 Text("Title \(name)")
                     .onTapGesture {
-                        print("Tapped \(name)")
+                        showEditSheet = true
                     }
                 Text(description)
                     .onTapGesture {
-                        print("Tapped \(description)")
+                        showEditSheet = true
                     }
                 DatePicker (
                     "Date",
                     selection: $date,
                     displayedComponents: [.date]
                 )
-                .onChange(of: date) {
-                    print(date)
-                }
+                //.onChange(of: date) {
+                //    showEditSheet = true
+                //}
                 VStack {
                     if let imgData = img {
                         if let image = UIImage(data: imgData) {
@@ -57,7 +58,7 @@ struct EventDetailsScreen: View {
                                 .border(.blue, width: 5)
                                 .cornerRadius(20)
                                 .onTapGesture {
-                                    print("Tapped on image")
+                                    showEditSheet = true
                                 }
                         }
                     }
@@ -80,6 +81,9 @@ struct EventDetailsScreen: View {
                     }
                 } message: {
                     Text("Are you sure you want to delete event \(name)")
+        }
+        .sheet(isPresented: $showEditSheet) { // show edit event sheet
+            EventFormView(eventId: id, name: $name, date: $date, description: $description, selectedImgData: $img, isCreateEvent: false)
         }
     }
     

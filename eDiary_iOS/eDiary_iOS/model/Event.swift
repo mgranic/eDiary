@@ -28,6 +28,14 @@ class Event {
         self.image = img
     }
     
+    // return FetchDescriptor to filter event with exact ID
+    static func searchById(evId: UUID) -> FetchDescriptor<Event> {
+        let predicate =  #Predicate<Event> { event in
+            event.id == evId
+        }
+        return FetchDescriptor<Event>(predicate: predicate)
+    }
+    
     // return predicate to filter all events from database that belong to a chapter with chapterId == chId
     static func searchByChapterId(chId: UUID) -> Predicate<Event> {
         return #Predicate<Event> { event in
