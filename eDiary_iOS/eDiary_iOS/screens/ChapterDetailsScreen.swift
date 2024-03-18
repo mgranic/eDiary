@@ -17,12 +17,15 @@ struct ChapterDetailsScreen: View {
     @StateObject var eventManager: EventManager = EventManager()
     
     var chapterId: UUID
+    var dateFormatter: DateFormatter
     
     init(name: State<String>, date: State<Date>, description: State<String>, chapterId: UUID) {
         self._name = name
         self._date = date
         self._description = description
         self.chapterId = chapterId
+        self.dateFormatter = DateFormatter()
+        self.dateFormatter.dateFormat = "E, d MMM y"
     }
     
     var body: some View {
@@ -31,6 +34,17 @@ struct ChapterDetailsScreen: View {
                 Text("Chapter \(name) details")
                 Text("Chapter description")
                 Text(description)
+                
+                Text(dateFormatter.string(from: date))
+                //DatePicker (
+                //    "Date",
+                //    selection: $date,
+                //    displayedComponents: [.date]
+                //)
+                
+            }
+            
+            VStack {
                 Button(action: {
                     // show sheet to create new chapter
                     showCreateEventSheet.toggle()
@@ -46,13 +60,7 @@ struct ChapterDetailsScreen: View {
                     // create event sheet
                     CreateEventView(chapterId: chapterId)
                 }
-                DatePicker (
-                    "Date",
-                    selection: $date,
-                    displayedComponents: [.date]
-                )
             }
-            
             
             VStack {
                 Text("Event list")

@@ -20,6 +20,7 @@ struct EventDetailsScreen: View {
     @State private var showEditSheet = false
     
     var id: UUID
+    var dateFormatter: DateFormatter
     
     init(name: State<String>, desc: State<String>, date: State<Date>, img: State<Data?>, id: UUID) {
         self._name = name
@@ -27,24 +28,28 @@ struct EventDetailsScreen: View {
         self._date = date
         self._img = img
         self.id = id
+        self.dateFormatter = DateFormatter()
+        self.dateFormatter.dateFormat = "E, d MMM y"
         
     }
     var body: some View {
         ScrollView {
             VStack {
-                Text("Title \(name)")
-                    .onTapGesture {
-                        showEditSheet = true
-                    }
-                Text(description)
-                    .onTapGesture {
-                        showEditSheet = true
-                    }
-                DatePicker (
-                    "Date",
-                    selection: $date,
-                    displayedComponents: [.date]
-                )
+                VStack {
+                    Text("Title \(name)")
+                        
+                    Text(description)
+                        
+                    Text(dateFormatter.string(from: date))
+                }
+                .onTapGesture {
+                    showEditSheet = true
+                }
+                //DatePicker (
+                //    "Date",
+                //    selection: $date,
+                //    displayedComponents: [.date]
+                //)
                 //.onChange(of: date) {
                 //    showEditSheet = true
                 //}
@@ -57,11 +62,12 @@ struct EventDetailsScreen: View {
                                 .frame(minWidth: UIScreen.main.bounds.width * 0.9, maxWidth: UIScreen.main.bounds.width * 0.9, minHeight: UIScreen.main.bounds.height * 0.9, maxHeight: UIScreen.main.bounds.height * 0.9)
                                 .border(.blue, width: 5)
                                 .cornerRadius(20)
-                                .onTapGesture {
-                                    showEditSheet = true
-                                }
+                                
                         }
                     }
+                }
+                .onTapGesture {
+                    showEditSheet = true
                 }
             }
         }
