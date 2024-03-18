@@ -26,7 +26,7 @@ struct ChapterDetailsScreen: View {
     }
     
     var body: some View {
-        ScrollView {
+        VStack {
             VStack {
                 Text("Chapter \(name) details")
                 Text("Chapter description")
@@ -51,34 +51,48 @@ struct ChapterDetailsScreen: View {
                     selection: $date,
                     displayedComponents: [.date]
                 )
-                
+            }
+            
+            
+            VStack {
                 Text("Event list")
-                VStack {
+                List {
                     // add list of events for this chapter
                     ForEach(eventManager.eventList) { event in
-                        NavigationLink(destination: EventDetailsScreen(name: State(initialValue: event.name), desc: State(initialValue: event.desc), date: State(initialValue: event.date), img: State(initialValue: event.image), id: event.id)) {
-                            VStack {
-                                Text(event.name)
-                                if let imgData = event.image {
-                                    if let image = UIImage(data: imgData) {
-                                        Image(uiImage: image)
-                                            .resizable()
-                                            .scaledToFit()
+                        NavigationLink(destination: EventDetailsScreen(name: State(initialValue: event.name), desc: State(initialValue: event.desc), date: State(initialValue: event.date), img:State(initialValue: event.image), id: event.id)) {
+                            HStack {
+                                VStack {
+                                    Text(event.name)
+                                    if let imgData = event.image {
+                                        if let image = UIImage(data: imgData) {
+                                            Image(uiImage: image)
+                                                .resizable()
+                                                .scaledToFit()
+                                        }
                                     }
                                 }
+                                
                             }
-                            .frame(minWidth: UIScreen.main.bounds.width * 0.9, maxWidth: UIScreen.main.bounds.width * 0.9, minHeight: UIScreen.main.bounds.height * 0.4, maxHeight: UIScreen.main.bounds.height * 0.4)
-                            .border(.blue, width: 5)
-                            .cornerRadius(20)
                         }
-                        
+                        .frame(minWidth: UIScreen.main.bounds.width * 0.9, maxWidth: UIScreen.main.bounds.width * 0.9, minHeight: UIScreen.main.bounds.height * 0.3, maxHeight: UIScreen.main.bounds.height * 0.3)
+                        .border(.blue, width: 5)
+                        .cornerRadius(20)
+                        .swipeActions {
+                            Button("Delete", role: .destructive) {
+                                //chapterManager.deleteById(dbId: chapter.id, modelCtx: modelCtx)
+                                // delete event
+                                eventManager.deleteById(dbId: event.id, modelCtx: modelCtx)
+                            }
+                            
+                        }
                     }
                 }
             }
-            .onAppear {
-                // update list of events
-                eventManager.updateEventList(chapterId: chapterId, modelCtx: modelCtx)
-            }
+            .frame(minHeight: UIScreen.main.bounds.height * 0.5, maxHeight: UIScreen.main.bounds.height * 0.5)
+        }
+        .onAppear {
+            // update list of events
+            eventManager.updateEventList(chapterId: chapterId, modelCtx: modelCtx)
         }
         
         
