@@ -29,6 +29,21 @@ class ChapterManager : ObservableObject {
         modelCtx.insert(Chapter(name: name, date: date, description: description))
     }
     
+    // edit chapter with id = eventId
+    func editChapter(chapterId: UUID, name: String, date: Date, description: String, modelCtx: ModelContext) {
+        let descriptor = Chapter.searchById(chId: chapterId)
+        do {
+            let chapter = try modelCtx.fetch(descriptor)
+            chapter.first?.name = name
+            chapter.first?.date = date
+            chapter.first?.desc = description
+            
+            databaseOperationFailed = false
+        } catch {
+            databaseOperationFailed = true
+        }
+    }
+    
     // delete chapter with ID specified by function parameter from database
     func deleteById(dbId: UUID, modelCtx: ModelContext) {
         do {

@@ -88,7 +88,7 @@ struct EventDetailsScreen: View {
                 } message: {
                     Text("Are you sure you want to delete event \(name)")
         }
-        .sheet(isPresented: $showEditSheet) { // show edit event sheet
+                .sheet(isPresented: $showEditSheet, onDismiss: {showEditSheet = false}) { // show edit event sheet
             EventFormView(eventId: id, name: $name, date: $date, description: $description, selectedImgData: $img, isCreateEvent: false)
         }
     }

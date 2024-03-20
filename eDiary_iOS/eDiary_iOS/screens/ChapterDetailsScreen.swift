@@ -19,6 +19,8 @@ struct ChapterDetailsScreen: View {
     var chapterId: UUID
     var dateFormatter: DateFormatter
     
+    @State private var showEditSheet = false
+    
     init(name: State<String>, date: State<Date>, description: State<String>, chapterId: UUID) {
         self._name = name
         self._date = date
@@ -42,6 +44,12 @@ struct ChapterDetailsScreen: View {
                 //    displayedComponents: [.date]
                 //)
                 
+            }
+            .onTapGesture {
+                showEditSheet = true
+            }
+            .sheet(isPresented: $showEditSheet, onDismiss: {showEditSheet = false}) {
+                ChapterFormView(chapterId: chapterId, name: $name, date: $date, description: $description, isCreateChapter: false)
             }
             
             VStack {

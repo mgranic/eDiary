@@ -23,4 +23,12 @@ class Chapter {
         self.creationTimestamp = Date()
         self.desc = description
     }
+    
+    // return FetchDescriptor to filter chapter with exact ID
+    static func searchById(chId: UUID) -> FetchDescriptor<Chapter> {
+        let predicate =  #Predicate<Chapter> { chapter in
+            chapter.id == chId
+        }
+        return FetchDescriptor<Chapter>(predicate: predicate)
+    }
 }

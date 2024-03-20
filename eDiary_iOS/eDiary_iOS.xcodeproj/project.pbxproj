@@ -23,6 +23,7 @@
 		20D0CFF12B9B5EA500A7540A /* EventDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D0CFF02B9B5EA500A7540A /* EventDetailsScreen.swift */; };
 		20E9A0452B89DAC300D47216 /* ChapterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E9A0442B89DAC300D47216 /* ChapterManager.swift */; };
 		20E9A0472B8A267600D47216 /* CreateChapterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E9A0462B8A267600D47216 /* CreateChapterView.swift */; };
+		20EA21CF2BAB364000AB06B0 /* ChapterFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EA21CE2BAB364000AB06B0 /* ChapterFormView.swift */; };
 		20F35F9C2B962A0D00E54122 /* CreateEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F35F9B2B962A0D00E54122 /* CreateEventView.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		20D0CFF02B9B5EA500A7540A /* EventDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsScreen.swift; sourceTree = "<group>"; };
 		20E9A0442B89DAC300D47216 /* ChapterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterManager.swift; sourceTree = "<group>"; };
 		20E9A0462B8A267600D47216 /* CreateChapterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChapterView.swift; sourceTree = "<group>"; };
+		20EA21CE2BAB364000AB06B0 /* ChapterFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterFormView.swift; sourceTree = "<group>"; };
 		20F35F9B2B962A0D00E54122 /* CreateEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				20BD86992BA21BCC00FF5FA3 /* EventFormView.swift */,
+				20EA21CE2BAB364000AB06B0 /* ChapterFormView.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				20BFB3FD2B985DA600CB299C /* EventManager.swift in Sources */,
 				209E52CC2B85E485009B1760 /* Chapter.swift in Sources */,
 				20F35F9C2B962A0D00E54122 /* CreateEventView.swift in Sources */,
+				20EA21CF2BAB364000AB06B0 /* ChapterFormView.swift in Sources */,
 				20CD7E702BA5ECF500DC7EEA /* ImageManager.swift in Sources */,
 				20E9A0472B8A267600D47216 /* CreateChapterView.swift in Sources */,
 				20BD869A2BA21BCC00FF5FA3 /* EventFormView.swift in Sources */,

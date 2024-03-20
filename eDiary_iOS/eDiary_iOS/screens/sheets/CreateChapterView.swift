@@ -15,50 +15,51 @@ struct CreateChapterView: View {
     @State var description: String = ""
     
     var body: some View {
-        Form {
-            Section {
-                HStack(alignment: .center) {
-                    Text("Name")
-                    TextField("Name", text: $name)
-                }
-            }
-            Section(header: Text("Chapter description")) {
-                TextEditor(text: $description)
-                    .foregroundStyle(.secondary)
-                    .padding(.horizontal)
-                    .navigationTitle("Description")
-                    .frame(minHeight: UIScreen.main.bounds.height * 0.3, maxHeight: UIScreen.main.bounds.height * 0.3)
-            }
-            Section {
-                DatePicker (
-                    "Date",
-                    selection: $date,
-                    displayedComponents: [.date]
-                )
-            }
-            Section {
-                HStack {
-                    Section {
-                        Button("Submit") {
-                            let chapterManager = ChapterManager()
-                            chapterManager.createChapter(name: name, date: date, description: description, modelCtx: modelCtx)
-                            dismiss()
-                        }
-                        .buttonStyle(.bordered)
-                        .controlSize(.large)
-                        .buttonBorderShape(.capsule)
-                    }
-                    .disabled(self.name.isEmpty)
-                    Button("Cancel") {
-                        //presentSheet = false
-                        dismiss()
-                    }
-                        .buttonStyle(.bordered)
-                        .controlSize(.large)
-                        .buttonBorderShape(.capsule)
-                }
-            }
-        }
+        ChapterFormView(name: $name, date: $date, description: $description, isCreateChapter: true)
+        //Form {
+        //    Section {
+        //        HStack(alignment: .center) {
+        //            Text("Name")
+        //            TextField("Name", text: $name)
+        //        }
+        //    }
+        //    Section(header: Text("Chapter description")) {
+        //        TextEditor(text: $description)
+        //            .foregroundStyle(.secondary)
+        //            .padding(.horizontal)
+        //            .navigationTitle("Description")
+        //            .frame(minHeight: UIScreen.main.bounds.height * 0.3, maxHeight: UIScreen.main.bounds.height * 0.3)
+        //    }
+        //    Section {
+        //        DatePicker (
+        //            "Date",
+        //            selection: $date,
+        //            displayedComponents: [.date]
+        //        )
+        //    }
+        //    Section {
+        //        HStack {
+        //            Section {
+        //                Button("Submit") {
+        //                    let chapterManager = ChapterManager()
+        //                    chapterManager.createChapter(name: name, date: date, description: description, modelCtx: modelCtx)
+        //                    dismiss()
+        //                }
+        //                .buttonStyle(.bordered)
+        //                .controlSize(.large)
+        //                .buttonBorderShape(.capsule)
+        //            }
+        //            .disabled(self.name.isEmpty)
+        //            Button("Cancel") {
+        //                //presentSheet = false
+        //                dismiss()
+        //            }
+        //                .buttonStyle(.bordered)
+        //                .controlSize(.large)
+        //                .buttonBorderShape(.capsule)
+        //        }
+        //    }
+        //}
     }
 }
 
