@@ -32,19 +32,18 @@ struct ChapterDetailsScreen: View {
     
     var body: some View {
         VStack {
-            VStack {
-                Text("Chapter \(name) details")
-                Text("Chapter description")
-                Text(description)
-                
+            ScrollView {
+                Text(name)
+                    .font(.system(.title, design: .rounded))
+                    .foregroundColor(.blue)
                 Text(dateFormatter.string(from: date))
-                //DatePicker (
-                //    "Date",
-                //    selection: $date,
-                //    displayedComponents: [.date]
-                //)
-                
+                    .font(.title3)
+                Text(description)
             }
+            .frame(minWidth: UIScreen.main.bounds.width * 0.9, maxWidth: UIScreen.main.bounds.width * 0.9, minHeight: UIScreen.main.bounds.height * 0.3, maxHeight: UIScreen.main.bounds.height * 0.3)
+            .background(.yellow)
+            .cornerRadius(15)
+            .foregroundColor(.black)
             .onTapGesture {
                 showEditSheet = true
             }
@@ -77,8 +76,10 @@ struct ChapterDetailsScreen: View {
                     ForEach(eventManager.eventList) { event in
                         NavigationLink(destination: EventDetailsScreen(name: State(initialValue: event.name), desc: State(initialValue: event.desc), date: State(initialValue: event.date), img:State(initialValue: event.image), id: event.id)) {
                             HStack {
-                                VStack {
+                                HStack {
                                     Text(event.name)
+                                        .foregroundStyle(.black)
+                                    Spacer()
                                     if let imgData = event.image {
                                         if let image = UIImage(data: imgData) {
                                             Image(uiImage: image)
@@ -91,8 +92,10 @@ struct ChapterDetailsScreen: View {
                             }
                         }
                         .frame(minWidth: UIScreen.main.bounds.width * 0.9, maxWidth: UIScreen.main.bounds.width * 0.9, minHeight: UIScreen.main.bounds.height * 0.3, maxHeight: UIScreen.main.bounds.height * 0.3)
-                        .border(.blue, width: 5)
-                        .cornerRadius(20)
+                        .background(.gray)
+                        .cornerRadius(15)
+                        //.border(.blue, width: 5)
+                        //.cornerRadius(20)
                         .swipeActions {
                             Button("Delete", role: .destructive) {
                                 //chapterManager.deleteById(dbId: chapter.id, modelCtx: modelCtx)

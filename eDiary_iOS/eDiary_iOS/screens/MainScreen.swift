@@ -13,6 +13,13 @@ struct MainScreen: View {
     @StateObject var chapterManager = ChapterManager()
     @State var showCreateChapterSheet: Bool = false   // toggle create chapter form
     
+    var dateFormatter: DateFormatter
+    
+    init() {
+        self.dateFormatter = DateFormatter()
+        self.dateFormatter.dateFormat = "E, d MMM y"
+    }
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -44,20 +51,22 @@ struct MainScreen: View {
                             HStack {
                                 Text("\(chapter.name)")
                                     .font(.title3)
+                                    .foregroundStyle(.black)
                                 Spacer()
-                                Text("\(chapter.date)")
+                                Text(dateFormatter.string(from: chapter.date))
                                     .font(.title3)
+                                    .foregroundStyle(.black)
                             }
                             .contentShape(Rectangle())
                         }
+                        .frame(minHeight: 100)
+                        .background(.yellow)
+                        .cornerRadius(15)
                         .swipeActions {
                             Button("Delete", role: .destructive) {
                                 chapterManager.deleteById(dbId: chapter.id, modelCtx: modelCtx)
-                            }
-                            
-                        }
+                            }                        }
                     }
-                    //.onDelete(perform: )
                 }
                 .listStyle(.inset)
                 .alert(isPresented: $chapterManager.databaseOperationFailed) {

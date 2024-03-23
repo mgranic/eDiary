@@ -36,23 +36,21 @@ struct EventDetailsScreen: View {
         ScrollView {
             VStack {
                 VStack {
-                    Text("Title \(name)")
-                        
-                    Text(description)
-                        
+                    Text(name)
+                        .font(.system(.title, design: .rounded))
+                        .foregroundColor(.blue)
                     Text(dateFormatter.string(from: date))
+                        .font(.title3)
+                    Text(description)
+                    Spacer()
                 }
+                .frame(minWidth: UIScreen.main.bounds.width * 0.9, maxWidth: UIScreen.main.bounds.width * 0.9, minHeight: UIScreen.main.bounds.height * 0.3)
+                .background(.yellow)
+                .cornerRadius(15)
+                .foregroundColor(.black)
                 .onTapGesture {
                     showEditSheet = true
                 }
-                //DatePicker (
-                //    "Date",
-                //    selection: $date,
-                //    displayedComponents: [.date]
-                //)
-                //.onChange(of: date) {
-                //    showEditSheet = true
-                //}
                 VStack {
                     if let imgData = img {
                         if let image = UIImage(data: imgData) {
@@ -60,8 +58,9 @@ struct EventDetailsScreen: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(minWidth: UIScreen.main.bounds.width * 0.9, maxWidth: UIScreen.main.bounds.width * 0.9, minHeight: UIScreen.main.bounds.height * 0.9, maxHeight: UIScreen.main.bounds.height * 0.9)
-                                .border(.blue, width: 5)
-                                .cornerRadius(20)
+                                //.border(.blue, width: 5)
+                                .cornerRadius(10)
+                                .background(.gray)
                                 
                         }
                     }
