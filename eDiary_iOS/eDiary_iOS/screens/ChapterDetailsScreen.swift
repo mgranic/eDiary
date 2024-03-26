@@ -15,6 +15,7 @@ struct ChapterDetailsScreen: View {
     @State var description: String
     @State var showCreateEventSheet: Bool = false   // toggle create event form
     @StateObject var eventManager: EventManager = EventManager()
+    @State var showUploadAlert = false
     
     var chapterId: UUID
     var dateFormatter: DateFormatter
@@ -109,12 +110,31 @@ struct ChapterDetailsScreen: View {
             }
             .frame(minHeight: UIScreen.main.bounds.height * 0.5, maxHeight: UIScreen.main.bounds.height * 0.5)
         }
+        .toolbar {
+            Button(action: {
+                // upload chapter to the server
+                showUploadAlert = true
+                
+            }) {
+                Image(systemName: "square.and.arrow.up")
+            }
+        }
+        .alert("Upload chapter", isPresented: $showUploadAlert) {
+            Button("Yes", action: {
+                /* upload selected chapter to the server */
+                let uploadMgr = UploadManager(chapter: Chapter(name: name, date: date, description: description), eventList: eventManager.eventList)
+                uploadMgr.uploadChapter()
+            })
+            Button("No", role: .cancel) {
+                showUploadAlert = false
+            }
+        } message: {
+            Text("Are you sure you want to upload chapter \(name)")
+        }
         .onAppear {
             // update list of events
             eventManager.updateEventList(chapterId: chapterId, modelCtx: modelCtx)
         }
-        
-        
     }
 }
 

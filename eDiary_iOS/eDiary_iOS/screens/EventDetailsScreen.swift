@@ -79,7 +79,7 @@ struct EventDetailsScreen: View {
                 Image(systemName: "trash")
             }
         }
-        .alert("Log in", isPresented: $showDeleteAlert) {
+        .alert("Delete event", isPresented: $showDeleteAlert) {
                     Button("Yes", action: submitDelete)
                     Button("No", role: .cancel) {
                         showDeleteAlert = false
