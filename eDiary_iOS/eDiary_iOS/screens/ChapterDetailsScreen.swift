@@ -10,23 +10,30 @@ import SwiftUI
 struct ChapterDetailsScreen: View {
     @Environment(\.modelContext) var modelCtx
     
-    @State var name: String
-    @State var date: Date
-    @State var description: String
+    @StateObject var chapter: Chapter
+    
+    //@State var name: String
+    //@State var date: Date
+    //@State var description: String
     @State var showCreateEventSheet: Bool = false   // toggle create event form
     @StateObject var eventManager: EventManager = EventManager()
     @State var showUploadAlert = false
     
-    var chapterId: UUID
+    //var chapterId: UUID
     var dateFormatter: DateFormatter
     
     @State private var showEditSheet = false
     
-    init(name: State<String>, date: State<Date>, description: State<String>, chapterId: UUID) {
-        self._name = name
-        self._date = date
-        self._description = description
-        self.chapterId = chapterId
+    //init(name: State<String>, date: State<Date>, description: State<String>, chapterId: UUID) {
+    //    self._name = name
+    //    self._date = date
+    //    self._description = description
+    //    self.chapterId = chapterId
+    //    self.dateFormatter = DateFormatter()
+    //    self.dateFormatter.dateFormat = "E, d MMM y"
+    //}
+    init(chapter: StateObject<Chapter>) {
+        self._chapter = chapter
         self.dateFormatter = DateFormatter()
         self.dateFormatter.dateFormat = "E, d MMM y"
     }
@@ -34,12 +41,12 @@ struct ChapterDetailsScreen: View {
     var body: some View {
         VStack {
             ScrollView {
-                Text(name)
+                Text(chapter.name)
                     .font(.system(.title, design: .rounded))
                     .foregroundColor(.blue)
-                Text(dateFormatter.string(from: date))
+                Text(dateFormatter.string(from: chapter.date))
                     .font(.title3)
-                Text(description)
+                Text(chapter.desc)
             }
             .frame(minWidth: UIScreen.main.bounds.width * 0.9, maxWidth: UIScreen.main.bounds.width * 0.9, minHeight: UIScreen.main.bounds.height * 0.3, maxHeight: UIScreen.main.bounds.height * 0.3)
             .background(.yellow)
@@ -49,7 +56,7 @@ struct ChapterDetailsScreen: View {
                 showEditSheet = true
             }
             .sheet(isPresented: $showEditSheet, onDismiss: {showEditSheet = false}) {
-                ChapterFormView(chapterId: chapterId, name: $name, date: $date, description: $description, isCreateChapter: false)
+                ChapterFormView(chapterId: chapter.id, name: $chapter.name, date: $chapter.date, description: $chapter.desc, isCreateChapter: false)
             }
             
             VStack {
@@ -63,10 +70,10 @@ struct ChapterDetailsScreen: View {
                 }
                 .sheet(isPresented: $showCreateEventSheet, onDismiss: {
                     // update list of events
-                    eventManager.updateEventList(chapterId: chapterId, modelCtx: modelCtx)
+                    eventManager.updateEventList(chapterId: chapter.id, modelCtx: modelCtx)
                 }) {
                     // create event sheet
-                    CreateEventView(chapterId: chapterId)
+                    CreateEventView(chapter: chapter)
                 }
             }
             
@@ -74,7 +81,7 @@ struct ChapterDetailsScreen: View {
                 Text("Event list")
                 List {
                     // add list of events for this chapter
-                    ForEach(eventManager.eventList) { event in
+                    ForEach(chapter.events) { event in
                         NavigationLink(destination: EventDetailsScreen(name: State(initialValue: event.name), desc: State(initialValue: event.desc), date: State(initialValue: event.date), img:State(initialValue: event.image), id: event.id)) {
                             HStack {
                                 HStack {
@@ -122,22 +129,18 @@ struct ChapterDetailsScreen: View {
         .alert("Upload chapter", isPresented: $showUploadAlert) {
             Button("Yes", action: {
                 /* upload selected chapter to the server */
-                let uploadMgr = UploadManager(chapter: Chapter(name: name, date: date, description: description), eventList: eventManager.eventList)
+                let uploadMgr = UploadManager(chapter: chapter, eventList: eventManager.eventList)
                 uploadMgr.uploadChapter()
             })
             Button("No", role: .cancel) {
                 showUploadAlert = false
             }
         } message: {
-            Text("Are you sure you want to upload chapter \(name)")
+            Text("Are you sure you want to upload chapter \(chapter.name)")
         }
         .onAppear {
             // update list of events
-            eventManager.updateEventList(chapterId: chapterId, modelCtx: modelCtx)
+            eventManager.updateEventList(chapterId: chapter.id, modelCtx: modelCtx)
         }
     }
-}
-
-#Preview {
-    ChapterDetailsScreen(name: State(initialValue: "Chapter title"), date: State(initialValue: Date()), description: State(initialValue: "ovo je opis"), chapterId: UUID(uuidString: "test uuid")!)
 }

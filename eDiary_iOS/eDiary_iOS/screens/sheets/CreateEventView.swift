@@ -19,14 +19,14 @@ struct CreateEventView: View {
     //@State private var pickerItem: PhotosPickerItem?
     @State var selectedImage: Data?
     
-    var chapterId: UUID
+    var chapter: Chapter
     
-    init(chapterId: UUID) {
-        self.chapterId = chapterId
+    init(chapter: Chapter) {
+        self.chapter = chapter
     }
     
     var body: some View {
-        EventFormView(chapterId: chapterId, name: $name, date: $date, description: $description, selectedImgData: $selectedImage, isCreateEvent: true)
+        EventFormView(chapter: chapter, name: $name, date: $date, description: $description, selectedImgData: $selectedImage, isCreateEvent: true)
         //VStack {
         //    Form {
         //        Section {
@@ -101,8 +101,4 @@ struct CreateEventView: View {
         //    }
         //}
     }
-}
-
-#Preview {
-    CreateEventView(chapterId: UUID(uuidString: "Test uuid")!)
 }

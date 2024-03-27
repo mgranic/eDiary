@@ -9,18 +9,18 @@ import Foundation
 import SwiftData
 
 @Model
-class Event {
+class Event {//}: ObservableObject {
     var id: UUID
-    var chapterId: UUID
+    var chapter: Chapter
     var name: String
     var desc: String
     var date: Date
     var timestamp: Date
     @Attribute(.externalStorage) var image: Data?
     
-    init(id: UUID = UUID(), chapterId: UUID, name: String, description: String, date: Date, img: Data? = nil) {
+    init(id: UUID = UUID(), chapter: Chapter, name: String, description: String, date: Date, img: Data? = nil) {
         self.id = id
-        self.chapterId = chapterId
+        self.chapter = chapter
         self.name = name
         self.desc = description
         self.date = date
@@ -39,7 +39,7 @@ class Event {
     // return predicate to filter all events from database that belong to a chapter with chapterId == chId
     static func searchByChapterId(chId: UUID) -> Predicate<Event> {
         return #Predicate<Event> { event in
-            event.chapterId == chId
+            event.chapter.id == chId
         }
     }
     

@@ -22,7 +22,7 @@ struct EventFormView: View {
     @Binding private var selectedImageData: Data?
     @State private var selectedImage: Image?
     
-    var chapterId: UUID?
+    var chapter: Chapter?
     var eventId: UUID?
     var isCreateEvent: Bool
     
@@ -41,8 +41,8 @@ struct EventFormView: View {
     //}
     
     // edit event
-    init(chapterId: UUID? = nil, eventId: UUID? = nil, name: Binding<String> = .constant(""), date: Binding<Date> = .constant(Date()), description: Binding<String> = .constant(""), selectedImgData: Binding<Data?> = .constant(nil), isCreateEvent: Bool) {
-        self.chapterId = chapterId
+    init(chapter: Chapter? = nil, eventId: UUID? = nil, name: Binding<String> = .constant(""), date: Binding<Date> = .constant(Date()), description: Binding<String> = .constant(""), selectedImgData: Binding<Data?> = .constant(nil), isCreateEvent: Bool) {
+        self.chapter = chapter
         self.eventId = eventId
         self._name = name
         self._date = date
@@ -99,7 +99,7 @@ struct EventFormView: View {
                                 Task {
                                     let eventManager = EventManager()
                                     if (isCreateEvent) {
-                                        await eventManager.createEvent(chapterId: chapterId!, name: name, date: date, description: description, img: pickerItem, modelCtx: modelCtx)
+                                        await eventManager.createEvent(chapter: chapter!, name: name, date: date, description: description, img: pickerItem, modelCtx: modelCtx)
                                     } else {
                                         await eventManager.editEvent(eventId: eventId!, name: name, date: date, description: description, img: pickerItem, modelCtx: modelCtx)
                                         // update selectedImageData to reflect it on details page on close if new image is selected
@@ -137,8 +137,4 @@ struct EventFormView: View {
             }
         }
     }
-}
-
-#Preview {
-    EventFormView(chapterId: UUID(uuidString: "Test uuid")!, isCreateEvent: true)
 }
