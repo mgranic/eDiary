@@ -47,10 +47,15 @@ class ChapterManager : ObservableObject {
     // delete chapter with ID specified by function parameter from database
     func deleteById(dbId: UUID, modelCtx: ModelContext) {
         do {
-            // delete from database
+            // delete chapter from database
             try modelCtx.delete(model: Chapter.self, where: #Predicate { chapter in chapter.id == dbId })
-            // delete from list view
+            
+            // delete all events for given chapter
+            try modelCtx.delete(model: Event.self, where: #Predicate { event in event.chapterId == dbId })
+            
+            // delete chapter from list view
             chapterList.removeAll(where: { chapter in chapter.id == dbId})
+            
             databaseOperationFailed = false
         } catch {
             databaseOperationFailed = true
