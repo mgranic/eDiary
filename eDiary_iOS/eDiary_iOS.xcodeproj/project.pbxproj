@@ -15,6 +15,8 @@
 		209E52BB2B85E401009B1760 /* eDiary_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209E52BA2B85E401009B1760 /* eDiary_iOSUITests.swift */; };
 		209E52BD2B85E401009B1760 /* eDiary_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209E52BC2B85E401009B1760 /* eDiary_iOSUITestsLaunchTests.swift */; };
 		209E52CC2B85E485009B1760 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209E52CB2B85E485009B1760 /* Chapter.swift */; };
+		20A2C7D22BC1912700048C2B /* MultipartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A2C7D12BC1912700048C2B /* MultipartRequest.swift */; };
+		20A2C7D42BC1916600048C2B /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A2C7D32BC1916600048C2B /* Data.swift */; };
 		20BD869A2BA21BCC00FF5FA3 /* EventFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BD86992BA21BCC00FF5FA3 /* EventFormView.swift */; };
 		20BFB3FD2B985DA600CB299C /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BFB3FC2B985DA600CB299C /* EventManager.swift */; };
 		20BFD6AB2B8A4B7B00BBDDBC /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BFD6AA2B8A4B7B00BBDDBC /* Event.swift */; };
@@ -57,6 +59,8 @@
 		209E52BA2B85E401009B1760 /* eDiary_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eDiary_iOSUITests.swift; sourceTree = "<group>"; };
 		209E52BC2B85E401009B1760 /* eDiary_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eDiary_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		209E52CB2B85E485009B1760 /* Chapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
+		20A2C7D12BC1912700048C2B /* MultipartRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartRequest.swift; sourceTree = "<group>"; };
+		20A2C7D32BC1916600048C2B /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		20BD86992BA21BCC00FF5FA3 /* EventFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFormView.swift; sourceTree = "<group>"; };
 		20BFB3FC2B985DA600CB299C /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		20BFD6AA2B8A4B7B00BBDDBC /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -174,6 +178,15 @@
 			path = model;
 			sourceTree = "<group>";
 		};
+		20A2C7D02BC1910E00048C2B /* http_multipart */ = {
+			isa = PBXGroup;
+			children = (
+				20A2C7D12BC1912700048C2B /* MultipartRequest.swift */,
+				20A2C7D32BC1916600048C2B /* Data.swift */,
+			);
+			path = http_multipart;
+			sourceTree = "<group>";
+		};
 		20BD86982BA21BA500FF5FA3 /* common */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +199,7 @@
 		20E9A0432B89DA6200D47216 /* viewmodel */ = {
 			isa = PBXGroup;
 			children = (
+				20A2C7D02BC1910E00048C2B /* http_multipart */,
 				20E9A0442B89DAC300D47216 /* ChapterManager.swift */,
 				20BFB3FC2B985DA600CB299C /* EventManager.swift */,
 				20CD7E6F2BA5ECF500DC7EEA /* ImageManager.swift */,
@@ -341,12 +355,14 @@
 				20CD7E702BA5ECF500DC7EEA /* ImageManager.swift in Sources */,
 				20E9A0472B8A267600D47216 /* CreateChapterView.swift in Sources */,
 				20BD869A2BA21BCC00FF5FA3 /* EventFormView.swift in Sources */,
+				20A2C7D22BC1912700048C2B /* MultipartRequest.swift in Sources */,
 				20E9A0452B89DAC300D47216 /* ChapterManager.swift in Sources */,
 				209E52A22B85E400009B1760 /* MainScreen.swift in Sources */,
 				20BFD6AD2B8A4D9600BBDDBC /* ChapterDetailsScreen.swift in Sources */,
 				20D0CFF12B9B5EA500A7540A /* EventDetailsScreen.swift in Sources */,
 				20BFD6AB2B8A4B7B00BBDDBC /* Event.swift in Sources */,
 				209E52A02B85E400009B1760 /* eDiary_iOSApp.swift in Sources */,
+				20A2C7D42BC1916600048C2B /* Data.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

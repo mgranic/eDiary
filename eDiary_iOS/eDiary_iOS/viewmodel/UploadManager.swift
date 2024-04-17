@@ -82,4 +82,34 @@ class UploadManager {
             
         }.resume()
     }
+    
+    private func sendEventDataToServer(event: Event) async {
+        var multipart = MultipartRequest()
+        for field in [
+            "firstName": "John",
+            "lastName": "Doe"
+        ] {
+            multipart.add(key: field.key, value: field.value)
+        }
+
+        multipart.add(
+            key: "file",
+            fileName: "pic.jpg",
+            fileMimeType: "image/png",
+            fileData: "fake-image-data".data(using: .utf8)!
+        )
+
+        /// Create a regular HTTP URL request & use multipart components
+        let url = URL(string: "https://httpbin.org/post")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue(multipart.httpContentTypeHeadeValue, forHTTPHeaderField: "Content-Type")
+        request.httpBody = multipart.httpBody
+
+        /// Fire the request using URL sesson or anything else...
+        let (data, response) = try! await URLSession.shared.data(for: request)
+
+        print((response as! HTTPURLResponse).statusCode)
+        print(String(data: data, encoding: .utf8)!)
+    }
 }
