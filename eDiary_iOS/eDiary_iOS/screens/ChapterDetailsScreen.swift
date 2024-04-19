@@ -123,7 +123,10 @@ struct ChapterDetailsScreen: View {
             Button("Yes", action: {
                 /* upload selected chapter to the server */
                 let uploadMgr = UploadManager(chapter: Chapter(name: name, date: date, description: description), eventList: eventManager.eventList)
-                uploadMgr.uploadChapter()
+                Task {
+                    await uploadMgr.uploadChapter()
+                }
+                
             })
             Button("No", role: .cancel) {
                 showUploadAlert = false

@@ -16,9 +16,10 @@ class UploadManager {
         self.eventList = eventList
     }
     
-    func uploadChapter() {
+    func uploadChapter() async {
         print(chapter.name)
         sendChapterDataToServer()
+        await sendEventDataToServer(event: Event(chapterId: UUID(), name: "ime", description: "opis", date: Date()))
         
         for event in eventList {
             print(event.name)
@@ -86,8 +87,7 @@ class UploadManager {
     private func sendEventDataToServer(event: Event) async {
         var multipart = MultipartRequest()
         for field in [
-            "firstName": "John",
-            "lastName": "Doe"
+            "description": "John"
         ] {
             multipart.add(key: field.key, value: field.value)
         }
@@ -100,7 +100,7 @@ class UploadManager {
         )
 
         /// Create a regular HTTP URL request & use multipart components
-        let url = URL(string: "https://httpbin.org/post")!
+        let url = URL(string: "http://192.168.1.80:5015/upload/uploadEvent")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue(multipart.httpContentTypeHeadeValue, forHTTPHeaderField: "Content-Type")
