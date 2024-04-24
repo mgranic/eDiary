@@ -121,6 +121,8 @@ struct ChapterDetailsScreen: View {
         }
         .alert("Upload chapter", isPresented: $showUploadAlert) {
             Button("Yes", action: {
+                
+                
                 /* upload selected chapter to the server */
                 let uploadMgr = UploadManager(chapter: Chapter(name: name, date: date, description: description), eventList: eventManager.eventList)
                 Task {

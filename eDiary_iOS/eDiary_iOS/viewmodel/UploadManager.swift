@@ -94,9 +94,10 @@ class UploadManager {
 
         multipart.add(
             key: "file",
-            fileName: "pic.jpg",
+            fileName: eventList.first?.image!.description ?? "pic.jpg",
             fileMimeType: "image/png",
-            fileData: "fake-image-data".data(using: .utf8)!
+            fileData: eventList.first?.image! ?? "fake-image-data".data(using: .utf8)!
+            //fileData: "fake-image-data".data(using: .utf8)!
         )
 
         /// Create a regular HTTP URL request & use multipart components
