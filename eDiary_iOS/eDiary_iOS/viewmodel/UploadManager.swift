@@ -19,17 +19,18 @@ class UploadManager {
     func uploadChapter() async {
         print(chapter.name)
         sendChapterDataToServer()
-        await sendEventDataToServer(event: Event(chapterId: UUID(), name: "ime", description: "opis", date: Date()))
+        //await sendEventDataToServer(event: Event(chapterId: UUID(), name: "ime", description: "opis", date: Date()))
         
         for event in eventList {
             print(event.name)
+            await sendEventDataToServer(event: event)
         }
     }
     
     /****************************************************** PRIVATE FUNCTIONS *****************************************************************/
     private func sendChapterDataToServer() {
         // Create a URL object for the GET request
-        let url = URL(string: "http://192.168.1.80:5015/chapter/createChapter")!
+        let url = URL(string: "http://192.168.1.80:5015/upload/createChapter")!
         
         let dateFormatter: DateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-ddTHH:mm:ss.SSSSSSSSSZ"
@@ -86,19 +87,29 @@ class UploadManager {
     
     private func sendEventDataToServer(event: Event) async {
         var multipart = MultipartRequest()
-        for field in [
-            "description": "John"
-        ] {
-            multipart.add(key: field.key, value: field.value)
+        let dateFormatter: DateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-ddTHH:mm:ss.SSSSSSSSSZ"
+        
+        multipart.add(key: "name", value: event.name)
+        multipart.add(key: "description", value: event.desc.isEmpty ? "_" : event.desc)
+        multipart.add(key: "date", value: dateFormatter.string(from: event.date))
+        
+        if let image = event.image {
+            multipart.add(
+                key: "file",
+                fileName: "image_\(event.id).jpg", //"pic.jpg",
+                fileMimeType: "image/png",
+                fileData: image//eventList.first?.image! ?? "fake-image-data".data(using: .utf8)!
+                //fileData: "fake-image-data".data(using: .utf8)!
+            )
+        } else {
+            multipart.add(
+                key: "file",
+                fileName: "dummy_pic.jpg",
+                fileMimeType: "image/png",
+                fileData: "fake-image-data".data(using: .utf8)!
+            )
         }
-
-        multipart.add(
-            key: "file",
-            fileName: eventList.first?.image!.description ?? "pic.jpg",
-            fileMimeType: "image/png",
-            fileData: eventList.first?.image! ?? "fake-image-data".data(using: .utf8)!
-            //fileData: "fake-image-data".data(using: .utf8)!
-        )
 
         /// Create a regular HTTP URL request & use multipart components
         let url = URL(string: "http://192.168.1.80:5015/upload/uploadEvent")!
