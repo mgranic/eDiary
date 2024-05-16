@@ -11,6 +11,8 @@ class UploadManager {
     var chapter: Chapter;
     var eventList: [Event]
     
+    private let baseUrl = "http://192.168.1.80:5015/upload/"
+    
     init(chapter: Chapter, eventList: [Event]) {
         self.chapter = chapter
         self.eventList = eventList
@@ -19,18 +21,26 @@ class UploadManager {
     func uploadChapter() async {
         print(chapter.name)
         sendChapterDataToServer()
-        //await sendEventDataToServer(event: Event(chapterId: UUID(), name: "ime", description: "opis", date: Date()))
         
+        // send data for all events to server
         for event in eventList {
             print(event.name)
             await sendEventDataToServer(event: event)
         }
     }
     
+    func uploadImages(imgsData: [Data]) async {
+        let response = await sendImagesToServer(imagesData: imgsData)
+        
+        print(response .statusCode)
+    }
+    
     /****************************************************** PRIVATE FUNCTIONS *****************************************************************/
+    // send chapter data to server with classic HTTP POST request
+    // this function does not send event data
     private func sendChapterDataToServer() {
         // Create a URL object for the GET request
-        let url = URL(string: "http://192.168.1.80:5015/upload/createChapter")!
+        let url = URL(string: "\(baseUrl)createChapter")!
         
         let dateFormatter: DateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-ddTHH:mm:ss.SSSSSSSSSZ"
@@ -85,6 +95,7 @@ class UploadManager {
         }.resume()
     }
     
+    // send event data to server using HTTP POST MULTIPART request
     private func sendEventDataToServer(event: Event) async {
         var multipart = MultipartRequest()
         let dateFormatter: DateFormatter = DateFormatter()
@@ -95,14 +106,15 @@ class UploadManager {
         multipart.add(key: "date", value: dateFormatter.string(from: event.date))
         
         if let image = event.image {
+            // send real image attached to event
             multipart.add(
                 key: "file",
                 fileName: "image_\(event.id).jpg", //"pic.jpg",
                 fileMimeType: "image/png",
-                fileData: image//eventList.first?.image! ?? "fake-image-data".data(using: .utf8)!
-                //fileData: "fake-image-data".data(using: .utf8)!
+                fileData: image
             )
         } else {
+            // this event does not have image so send dummy data to satisfy request form
             multipart.add(
                 key: "file",
                 fileName: "dummy_pic.jpg",
@@ -112,7 +124,7 @@ class UploadManager {
         }
 
         /// Create a regular HTTP URL request & use multipart components
-        let url = URL(string: "http://192.168.1.80:5015/upload/uploadEvent")!
+        let url = URL(string: "\(baseUrl)uploadEvent")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue(multipart.httpContentTypeHeadeValue, forHTTPHeaderField: "Content-Type")
@@ -123,5 +135,30 @@ class UploadManager {
 
         print((response as! HTTPURLResponse).statusCode)
         print(String(data: data, encoding: .utf8)!)
+    }
+    
+    private func sendImagesToServer(imagesData: [Data]) async -> HTTPURLResponse {
+        var multipart = MultipartRequest()
+        var imgNum: Int = 0
+        
+        for imgData in imagesData {
+            multipart.add(
+                key: "files",
+                fileName: "image_\(imgNum).jpg", //"pic.jpg",
+                fileMimeType: "image/png",
+                fileData: imgData)
+            imgNum += 1
+        }
+        
+        let url = URL(string: "\(baseUrl)UploadImages")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue(multipart.httpContentTypeHeadeValue, forHTTPHeaderField: "Content-Type")
+        request.httpBody = multipart.httpBody
+
+        /// Fire the request using URL sesson or anything else...
+        let (data, response) = try! await URLSession.shared.data(for: request)
+        
+        return response as! HTTPURLResponse
     }
 }

@@ -74,24 +74,15 @@ struct MainScreen: View {
                 }
             }
             .padding()
-        }
-        .toolbar {
-            //NavigationLink(destination: SearchView(modelCtx: modelCtx)) {
-            //    Image(systemName: "magnifyingglass")
-            //}
-            //Menu {
-            //    NavigationLink(destination: ExpenseStatsView()) {
-            //        Text("Expense Stats")
-            //    }
-            //    NavigationLink(destination: ScheduleExpenseView()) {
-            //        Text("Schedule expense")
-            //    }
-            //    NavigationLink(destination: SettingsView()) {
-            //        Text("Settings")
-            //    }
-            //} label: {
-            //    Label("Menu", systemImage: "ellipsis.circle")
-            //}
+            .toolbar {
+                Menu {
+                    NavigationLink(destination: UploadImagesScreen()) {
+                        Text("Upload images")
+                    }
+                } label: {
+                    Label("Menu", systemImage: "ellipsis.circle")
+                }
+            }
         }
     }
 }
