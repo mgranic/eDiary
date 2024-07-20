@@ -87,8 +87,15 @@ struct EventDetailsScreen: View {
                 } message: {
                     Text("Are you sure you want to delete event \(name)")
         }
-                .sheet(isPresented: $showEditSheet, onDismiss: {showEditSheet = false}) { // show edit event sheet
-            EventFormView(eventId: id, name: $name, date: $date, description: $description, selectedImgData: $img, isCreateEvent: false)
+                .sheet(isPresented: $showEditSheet, onDismiss: {
+                    showEditSheet = false
+                    
+                    // edit image to force change on the creen
+                    let eventManager = EventManager()
+                    let event = eventManager.getEvent(eventId: id, modelCtx: modelCtx)
+                    img = event?.image
+                }) { // show edit event sheet
+                    EventFormView(eventId: id, name: $name, date: $date, description: $description, selectedImgData: $img, isCreateEvent: false)
         }
     }
     

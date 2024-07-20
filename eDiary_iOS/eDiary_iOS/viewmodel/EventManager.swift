@@ -15,7 +15,20 @@ class EventManager : ObservableObject {
     @Published var eventList: [Event] = []
     @Published var databaseOperationFailed = false
     
-    // create Event based on the parameters and store it into the database
+    // check if this is image created from gallery or camera and act accordingly
+    func createEventDispatcher(chapterId: UUID, name: String, date: Date, description: String, imgPicker: PhotosPickerItem? = nil, imgUiImg: UIImage? = nil, modelCtx: ModelContext) async {
+        
+        if imgUiImg != nil {
+            // create event from camera photo
+            await createEvent(chapterId: chapterId, name: name, date: date, description: description, img: imgUiImg, modelCtx: modelCtx)
+        } else {
+            // ceate event from gallery photo (or no photo)
+            await createEvent(chapterId: chapterId, name: name, date: date, description: description, img: imgPicker, modelCtx: modelCtx)
+        }
+        
+    }
+    
+    // create Event based on the parameters and store it into the database (image is selected from gallery)
     func createEvent(chapterId: UUID, name: String, date: Date, description: String, img: PhotosPickerItem? = nil, modelCtx: ModelContext) async {
         // if img is not nil
         if let image = img {
@@ -31,7 +44,31 @@ class EventManager : ObservableObject {
         }
     }
     
-    // edit event with id = eventId
+    // create Event based on the parameters and store it into the database (image is captured by camera directly)
+    func createEvent(chapterId: UUID, name: String, date: Date, description: String, img: UIImage? = nil, modelCtx: ModelContext) async {
+        // if img is not nil
+        if let image = img {
+            let imgData = image.pngData()
+            modelCtx.insert(Event(chapterId: chapterId, name: name, description: description, date: date, img: imgData))
+        } else {
+            modelCtx.insert(Event(chapterId: chapterId, name: name, description: description, date: date))
+        }
+    }
+    
+    // edit event with image comminng either from gallery or from camera
+    func editEventDispatcher(eventId: UUID, name: String, date: Date, description: String, imgPhotosPicker: PhotosPickerItem? = nil, imgUiImage: UIImage? = nil, modelCtx: ModelContext) async {
+        
+        if imgUiImage != nil {
+            // edit image with photo from camera
+            await editEvent(eventId: eventId, name: name, date: date, description: description, img: imgUiImage, modelCtx: modelCtx)
+        } else {
+            // edit image with photo from gallery (or no photo)
+            await editEvent(eventId: eventId, name: name, date: date, description: description, img: imgPhotosPicker, modelCtx: modelCtx)
+        }
+        
+    }
+    
+    // edit event with id = eventId (image from gallery)
     func editEvent(eventId: UUID, name: String, date: Date, description: String, img: PhotosPickerItem? = nil, modelCtx: ModelContext) async {
         let descriptor = Event.searchById(evId: eventId)
         do {
@@ -43,6 +80,27 @@ class EventManager : ObservableObject {
             // if photospickeritem is passed store it to database
             if let image = img {
                 let imgData = try await image.loadTransferable(type: Data.self)
+                event.first?.image = imgData
+            }
+            
+            databaseOperationFailed = false
+        } catch {
+            databaseOperationFailed = true
+        }
+    }
+    
+    // edit event with id = eventId (image from camera)
+    func editEvent(eventId: UUID, name: String, date: Date, description: String, img: UIImage? = nil, modelCtx: ModelContext) async {
+        let descriptor = Event.searchById(evId: eventId)
+        do {
+            let event = try modelCtx.fetch(descriptor)
+            event.first?.name = name
+            event.first?.date = date
+            event.first?.desc = description
+            
+            // if photospickeritem is passed store it to database
+            if let image = img {
+                let imgData = image.pngData()
                 event.first?.image = imgData
             }
             
@@ -74,6 +132,20 @@ class EventManager : ObservableObject {
         } catch {
             databaseOperationFailed = true
         }
+    }
+    
+    // get event by ID
+    func getEvent(eventId:UUID, modelCtx: ModelContext) -> Event? {
+        let descriptor = Event.searchById(evId: eventId)
+        do {
+            let event = try modelCtx.fetch(descriptor)
+            databaseOperationFailed = false
+            return event.first!
+        } catch {
+            databaseOperationFailed = true
+            return nil
+        }
+        
     }
     
     /************************************************************************************PRIVATE FUNCTIONS************************************************************************************/

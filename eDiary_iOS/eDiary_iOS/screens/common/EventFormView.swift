@@ -19,8 +19,29 @@ struct EventFormView: View {
     @State private var authorized = PHPhotoLibrary.authorizationStatus()
     @State private var pickerItem: PhotosPickerItem?
     
-    @Binding private var selectedImageData: Data?
+    //@Binding private var selectedImageData: Data?
     @State private var selectedImage: Image?
+    
+    @State private var showCamera = false
+    @State private var selectedCameraImage: UIImage?
+    @State var isCameraAuthorized = false//AVAuthorizationStatus.notDetermined
+    
+    //var isAuthorized: Bool {
+    //    get async {
+    //        let status = AVCaptureDevice.authorizationStatus(for: .video)
+    //
+    //        // Determine if the user previously authorized camera access.
+    //        var isAuthorized = status == .authorized
+    //
+    //        // If the system hasn't determined the user's authorization status,
+    //        // explicitly prompt them for approval.
+    //        if status == .notDetermined {
+    //            isAuthorized = await AVCaptureDevice.requestAccess(for: .video)
+    //        }
+    //
+    //        return isAuthorized
+    //    }
+    //}
     
     var chapterId: UUID?
     var eventId: UUID?
@@ -47,11 +68,12 @@ struct EventFormView: View {
         self._name = name
         self._date = date
         self._description = description
-        self._selectedImageData = selectedImgData
+        //self._selectedImageData = selectedImgData
         self.isCreateEvent = isCreateEvent
         
         let imgManager = ImageManager()
         self._selectedImage = State(initialValue: imgManager.imageDataToImage(imgData: selectedImgData.wrappedValue))
+        
     }
     
     var body: some View {
@@ -92,6 +114,23 @@ struct EventFormView: View {
                             .scaledToFit()
                 }
                 
+                VStack {
+                    //if let selectedCameraImage {
+                    //    Image(uiImage: selectedCameraImage)
+                    //        .resizable()
+                    //        .scaledToFit()
+                    //}
+                    
+                    if isCameraAuthorized == true {
+                        Button("Open camera") {
+                            self.showCamera.toggle()
+                        }
+                        .fullScreenCover(isPresented: self.$showCamera) {
+                            accessCameraView(selectedImage: self.$selectedImage, selectedCameraImage: self.$selectedCameraImage)
+                        }
+                    }
+                }
+                
                 Section {
                     HStack {
                         Section {
@@ -99,14 +138,14 @@ struct EventFormView: View {
                                 Task {
                                     let eventManager = EventManager()
                                     if (isCreateEvent) {
-                                        await eventManager.createEvent(chapterId: chapterId!, name: name, date: date, description: description, img: pickerItem, modelCtx: modelCtx)
+                                        await eventManager.createEventDispatcher(chapterId: chapterId!, name: name, date: date, description: description, imgPicker: pickerItem, imgUiImg: selectedCameraImage, modelCtx: modelCtx)
                                     } else {
-                                        await eventManager.editEvent(eventId: eventId!, name: name, date: date, description: description, img: pickerItem, modelCtx: modelCtx)
+                                        await eventManager.editEventDispatcher(eventId: eventId!, name: name, date: date, description: description, imgPhotosPicker: pickerItem, imgUiImage: selectedCameraImage, modelCtx: modelCtx)
                                         // update selectedImageData to reflect it on details page on close if new image is selected
-                                        if let newPhotosPickerItem = pickerItem {
-                                            let imgManager = ImageManager()
-                                            selectedImageData = await imgManager.photosPickerToData(img: newPhotosPickerItem)
-                                        }
+                                        //if let newPhotosPickerItem = pickerItem {
+                                        //    let imgManager = ImageManager()
+                                        //    selectedImageData = await imgManager.photosPickerToData(img: newPhotosPickerItem)
+                                        //}
                                     }
                 
                                 }
@@ -135,7 +174,65 @@ struct EventFormView: View {
                     self.authorized = status
                 }
             }
+            
+            authorizeCamera()
         }
+    }
+    
+    private func authorizeCamera() {
+        Task {
+            let status = AVCaptureDevice.authorizationStatus(for: .video)
+            
+            // Determine if the user previously authorized camera access.
+            isCameraAuthorized = status == .authorized
+            
+            // If the system hasn't determined the user's authorization status,
+            // explicitly prompt them for approval.
+            if status == .notDetermined {
+                isCameraAuthorized = await AVCaptureDevice.requestAccess(for: .video)
+            }
+        }
+    }
+}
+
+struct accessCameraView: UIViewControllerRepresentable {
+    
+    @Binding var selectedImage: Image?
+    @Binding var selectedCameraImage: UIImage?
+    @Environment(\.presentationMode) var isPresented
+    
+    func makeUIViewController(context: Context) -> UIImagePickerController {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .camera
+        imagePicker.allowsEditing = true
+        imagePicker.delegate = context.coordinator
+        return imagePicker
+    }
+    
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {
+        
+    }
+
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(picker: self)
+    }
+}
+
+// Coordinator will help to preview the selected image in the View.
+class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    var picker: accessCameraView
+    
+    init(picker: accessCameraView) {
+        self.picker = picker
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let selectedImage = info[.originalImage] as? UIImage else { return }
+        //self.picker.selectedImage = selectedImage
+        self.picker.selectedImage = Image(uiImage: selectedImage)
+        self.picker.selectedCameraImage = selectedImage
+        //self.picker.pickerItem = info[.originalImage] as? PhotosPickerItem
+        self.picker.isPresented.wrappedValue.dismiss()
     }
 }
 
