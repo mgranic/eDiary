@@ -26,40 +26,9 @@ struct EventFormView: View {
     @State private var selectedCameraImage: UIImage?
     @State var isCameraAuthorized = false//AVAuthorizationStatus.notDetermined
     
-    //var isAuthorized: Bool {
-    //    get async {
-    //        let status = AVCaptureDevice.authorizationStatus(for: .video)
-    //
-    //        // Determine if the user previously authorized camera access.
-    //        var isAuthorized = status == .authorized
-    //
-    //        // If the system hasn't determined the user's authorization status,
-    //        // explicitly prompt them for approval.
-    //        if status == .notDetermined {
-    //            isAuthorized = await AVCaptureDevice.requestAccess(for: .video)
-    //        }
-    //
-    //        return isAuthorized
-    //    }
-    //}
-    
     var chapterId: UUID?
     var eventId: UUID?
     var isCreateEvent: Bool
-    
-    // create event
-    //init(chapterId: UUID? = nil, eventId: UUID? = nil, name: Binding<String> = .constant(""), date: Binding<Date> = .constant(Date()), description: Binding<String> = .constant(""), selectedImgData: Binding<Data?> = .constant(nil), isCreateEvent: Bool) {
-    //    self.chapterId = chapterId
-    //    self.eventId = eventId
-    //    self._name = name
-    //    self._date = date
-    //    self._description = description
-    //    self._selectedImageData = selectedImgData
-    //    self.isCreateEvent = isCreateEvent
-    //
-    //    let imgManager = ImageManager()
-    //    self._selectedImage = State(initialValue: imgManager.imageDataToImage(imgData: selectedImgData.wrappedValue))
-    //}
     
     // edit event
     init(chapterId: UUID? = nil, eventId: UUID? = nil, name: Binding<String> = .constant(""), date: Binding<Date> = .constant(Date()), description: Binding<String> = .constant(""), selectedImgData: Binding<Data?> = .constant(nil), isCreateEvent: Bool) {

@@ -9,7 +9,7 @@ import Foundation
 import PhotosUI
 import SwiftUI
 
-class ImageManager {
+struct ImageManager {
     
     func photosPickerToData(img: PhotosPickerItem?) async -> Data? {
         

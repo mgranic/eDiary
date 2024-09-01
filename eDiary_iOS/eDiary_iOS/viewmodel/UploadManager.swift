@@ -7,7 +7,7 @@
 
 import Foundation
 
-class UploadManager {
+struct UploadManager {
     var chapter: Chapter;
     var eventList: [Event]
     
