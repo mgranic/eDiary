@@ -124,7 +124,7 @@ struct EventFormView: View {
                             .controlSize(.large)
                             .buttonBorderShape(.capsule)
                         }
-                        .disabled(self.name.isEmpty)
+                        //.disabled(self.name.isEmpty)
                         Button("Cancel") {
                             //presentSheet = false
                             dismiss()

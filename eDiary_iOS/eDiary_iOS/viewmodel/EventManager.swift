@@ -45,7 +45,7 @@ class EventManager : ObservableObject {
     }
     
     // create Event based on the parameters and store it into the database (image is captured by camera directly)
-    func createEvent(chapterId: UUID, name: String, date: Date, description: String, img: UIImage? = nil, modelCtx: ModelContext) async {
+    func createEvent(chapterId: UUID, name: String = "", date: Date = Date(), description: String = "", img: UIImage? = nil, modelCtx: ModelContext) async {
         // if img is not nil
         if let image = img {
             let imgData = image.pngData()
@@ -56,7 +56,7 @@ class EventManager : ObservableObject {
     }
     
     // edit event with image comminng either from gallery or from camera
-    func editEventDispatcher(eventId: UUID, name: String, date: Date, description: String, imgPhotosPicker: PhotosPickerItem? = nil, imgUiImage: UIImage? = nil, modelCtx: ModelContext) async {
+    func editEventDispatcher(eventId: UUID, name: String = "", date: Date = Date(), description: String = "", imgPhotosPicker: PhotosPickerItem? = nil, imgUiImage: UIImage? = nil, modelCtx: ModelContext) async {
         
         if imgUiImage != nil {
             // edit image with photo from camera

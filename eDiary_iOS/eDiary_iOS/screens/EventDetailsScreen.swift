@@ -48,31 +48,33 @@ struct EventDetailsScreen: View {
                 .background(.yellow)
                 .cornerRadius(15)
                 .foregroundColor(.black)
-                .onTapGesture {
-                    showEditSheet = true
-                }
                 VStack {
                     if let imgData = img {
                         if let image = UIImage(data: imgData) {
-                            Image(uiImage: image)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(minWidth: UIScreen.main.bounds.width * 0.9, maxWidth: UIScreen.main.bounds.width * 0.9, minHeight: UIScreen.main.bounds.height * 0.9, maxHeight: UIScreen.main.bounds.height * 0.9)
-                                //.border(.blue, width: 5)
-                                .cornerRadius(10)
-                                .background(.gray)
-                                
+                            NavigationLink(destination: FullScaleImageScreen(img: image)) {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(minWidth: UIScreen.main.bounds.width * 0.9, maxWidth: UIScreen.main.bounds.width * 0.9, minHeight: UIScreen.main.bounds.height * 0.9, maxHeight: UIScreen.main.bounds.height * 0.9)
+                                    //.border(.blue, width: 5)
+                                    .cornerRadius(10)
+                                    .background(.gray)
+                            }
                         }
                     }
-                }
-                .onTapGesture {
-                    showEditSheet = true
                 }
             }
         }
         .toolbar {
             Button(action: {
-                // delete chapter and show dialog "are you sure"
+                // show edit event dialogue/sheet
+                showEditSheet = true
+                
+            }) {
+                Image(systemName: "pencil")
+            }
+            Button(action: {
+                // delete event and show dialog "are you sure"
                 showDeleteAlert = true
                 
             }) {
@@ -87,15 +89,15 @@ struct EventDetailsScreen: View {
                 } message: {
                     Text("Are you sure you want to delete event \(name)")
         }
-                .sheet(isPresented: $showEditSheet, onDismiss: {
-                    showEditSheet = false
-                    
-                    // edit image to force change on the creen
-                    let eventManager = EventManager()
-                    let event = eventManager.getEvent(eventId: id, modelCtx: modelCtx)
-                    img = event?.image
-                }) { // show edit event sheet
-                    EventFormView(eventId: id, name: $name, date: $date, description: $description, selectedImgData: $img, isCreateEvent: false)
+        .sheet(isPresented: $showEditSheet, onDismiss: {
+            showEditSheet = false
+            
+            // edit image to force change on the creen
+            let eventManager = EventManager()
+            let event = eventManager.getEvent(eventId: id, modelCtx: modelCtx)
+            img = event?.image
+        }) { // show edit event sheet
+            EventFormView(eventId: id, name: $name, date: $date, description: $description, selectedImgData: $img, isCreateEvent: false)
         }
     }
     
