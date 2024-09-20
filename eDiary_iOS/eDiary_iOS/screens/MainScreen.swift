@@ -45,7 +45,7 @@ struct MainScreen: View {
                 Text("Chapter list")
                     .font(.system(.title2, design: .rounded))
                     .foregroundColor(.purple)
-                List { //}($chapterManager.chapterList, editActions: .delete) { $chapter in
+                List {
                     ForEach(chapterManager.chapterList) { chapter in
                         NavigationLink(destination: ChapterDetailsScreen(name: State(initialValue: chapter.name), date: State(initialValue: chapter.date), description: State(initialValue: chapter.desc), chapterId: chapter.id)) {
                             HStack {

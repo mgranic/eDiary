@@ -53,19 +53,9 @@ struct UploadManager {
         
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         let jsonObject: [String: Any] = ["id": 1, "userId": chapter.userId ?? 1, "name": chapter.name, "desc": chapter.desc, "date": dateFormatter.string(from: chapter.date)]
-        //let jsonObject: [String: Any] = ["id": 1, "userId": chapter.userId ?? 1, "name": chapter.name, "desc": chapter.desc, "date": "2024-04-15T13:09:02.596000000"]
         let jsonData = try! JSONSerialization.data(withJSONObject: jsonObject, options: [])
         print(String(data: jsonData, encoding: .utf8))
         request.httpBody = jsonData
-        
-        //let jsonEncoder = JSONEncoder()
-        //let chapterJson = try! jsonEncoder.encode(chapter)
-        //let chapterJsonString = String(data: chapterJson, encoding: .utf8)
-        //print(chapterJsonString)
-        //request.httpBody = chapterJson
-        
-        //let jsonData = try! JSONSerialization.data(withJSONObject: chapter, options: [])
-        //request.httpBody = jsonData
         
         // Make the HTTP request
         URLSession.shared.dataTask(with: request) { data, response, error in
@@ -87,10 +77,6 @@ struct UploadManager {
             
             // Get the response data
             print(String(data: data!, encoding: .utf8)!)
-            //motivationalQuote = String(data: data!, encoding: .utf8)!
-            //let value = responseString.substring(from: 9)
-            //let x = data!
-            //print(motivationalQuote)
             
         }.resume()
     }

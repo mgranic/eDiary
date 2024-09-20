@@ -95,8 +95,6 @@ struct ChapterDetailsScreen: View {
                         .frame(minWidth: UIScreen.main.bounds.width * 0.9, maxWidth: UIScreen.main.bounds.width * 0.9, minHeight: UIScreen.main.bounds.height * 0.3, maxHeight: UIScreen.main.bounds.height * 0.3)
                         .background(.gray)
                         .cornerRadius(15)
-                        //.border(.blue, width: 5)
-                        //.cornerRadius(20)
                         .swipeActions {
                             Button("Delete", role: .destructive) {
                                 //chapterManager.deleteById(dbId: chapter.id, modelCtx: modelCtx)

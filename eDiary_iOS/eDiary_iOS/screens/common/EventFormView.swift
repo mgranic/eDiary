@@ -19,12 +19,11 @@ struct EventFormView: View {
     @State private var authorized = PHPhotoLibrary.authorizationStatus()
     @State private var pickerItem: PhotosPickerItem?
     
-    //@Binding private var selectedImageData: Data?
     @State private var selectedImage: Image?
     
     @State private var showCamera = false
     @State private var selectedCameraImage: UIImage?
-    @State var isCameraAuthorized = false//AVAuthorizationStatus.notDetermined
+    @State var isCameraAuthorized = false
     
     var chapterId: UUID?
     var eventId: UUID?
@@ -84,12 +83,6 @@ struct EventFormView: View {
                 }
                 
                 VStack {
-                    //if let selectedCameraImage {
-                    //    Image(uiImage: selectedCameraImage)
-                    //        .resizable()
-                    //        .scaledToFit()
-                    //}
-                    
                     if isCameraAuthorized == true {
                         Button("Open camera") {
                             self.showCamera.toggle()
@@ -110,11 +103,6 @@ struct EventFormView: View {
                                         await eventManager.createEventDispatcher(chapterId: chapterId!, name: name, date: date, description: description, imgPicker: pickerItem, imgUiImg: selectedCameraImage, modelCtx: modelCtx)
                                     } else {
                                         await eventManager.editEventDispatcher(eventId: eventId!, name: name, date: date, description: description, imgPhotosPicker: pickerItem, imgUiImage: selectedCameraImage, modelCtx: modelCtx)
-                                        // update selectedImageData to reflect it on details page on close if new image is selected
-                                        //if let newPhotosPickerItem = pickerItem {
-                                        //    let imgManager = ImageManager()
-                                        //    selectedImageData = await imgManager.photosPickerToData(img: newPhotosPickerItem)
-                                        //}
                                     }
                 
                                 }
@@ -197,10 +185,8 @@ class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerContro
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let selectedImage = info[.originalImage] as? UIImage else { return }
-        //self.picker.selectedImage = selectedImage
         self.picker.selectedImage = Image(uiImage: selectedImage)
         self.picker.selectedCameraImage = selectedImage
-        //self.picker.pickerItem = info[.originalImage] as? PhotosPickerItem
         self.picker.isPresented.wrappedValue.dismiss()
     }
 }
