@@ -10,6 +10,7 @@ import SwiftData
 import SwiftUI
 import PhotosUI
 
+@MainActor
 class EventManager : ObservableObject {
     
     @Published var eventList: [Event] = []
