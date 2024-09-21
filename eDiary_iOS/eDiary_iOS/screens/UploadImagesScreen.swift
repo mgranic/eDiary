@@ -20,11 +20,11 @@ struct UploadImagesScreen: View {
         VStack {
             if authorized == .authorized {
                 PhotosPicker("Select a picture", selection: $pickerItems, matching: .images)
-                    .onChange(of: pickerItems) { pickerItems in
+                    .onChange(of: pickerItems) { oldItems, newItems in
                         
                         Task {
                             selectedImages.removeAll()
-                            for item in pickerItems {
+                            for item in newItems {
                                 item.loadTransferable(type: Data.self) { result in
                                     switch result {
                                     case .success(let imageData):
