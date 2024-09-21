@@ -30,9 +30,12 @@ struct UploadManager {
     }
     
     func uploadImages(imgsData: [Data]) async {
-        let response = await sendImagesToServer(imagesData: imgsData)
-        
-        print(response .statusCode)
+        do {
+            let response = try await sendImagesToServer(imagesData: imgsData)
+            print(response.statusCode)
+        } catch {
+            print("Failed to upload images to server!!!")
+        }
     }
     
     /****************************************************** PRIVATE FUNCTIONS *****************************************************************/
@@ -54,7 +57,7 @@ struct UploadManager {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         let jsonObject: [String: Any] = ["id": 1, "userId": chapter.userId ?? 1, "name": chapter.name, "desc": chapter.desc, "date": dateFormatter.string(from: chapter.date)]
         let jsonData = try! JSONSerialization.data(withJSONObject: jsonObject, options: [])
-        print(String(data: jsonData, encoding: .utf8))
+        print(String(data: jsonData, encoding: .utf8) ?? "Invalid JSON data")
         request.httpBody = jsonData
         
         // Make the HTTP request
@@ -123,7 +126,7 @@ struct UploadManager {
         print(String(data: data, encoding: .utf8)!)
     }
     
-    private func sendImagesToServer(imagesData: [Data]) async -> HTTPURLResponse {
+    private func sendImagesToServer(imagesData: [Data]) async throws -> HTTPURLResponse {
         var multipart = MultipartRequest()
         var imgNum: Int = 0
         
@@ -143,7 +146,7 @@ struct UploadManager {
         request.httpBody = multipart.httpBody
 
         /// Fire the request using URL sesson or anything else...
-        let (data, response) = try! await URLSession.shared.data(for: request)
+        let (_ , response) = try await URLSession.shared.data(for: request)
         
         return response as! HTTPURLResponse
     }
