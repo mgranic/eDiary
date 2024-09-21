@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 struct EventDetailsScreen: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var modelCtx
